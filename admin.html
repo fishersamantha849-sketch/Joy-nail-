@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Joy Nail Artistry – Manage products</title>
+<style>
+  :root{--bg:#fbf4f3;--card:#fff;--ink:#3a2231;--muted:#8a7280;--accent:#a3335f;--accent-2:#f3d9e3;--line:#ecd9df;--ok:#2f7a55;--bad:#b3261e}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Georgia,'Times New Roman',serif}
+  h1,h2{font-weight:600;margin:0 0 .5rem}
+  h1{font-size:1.7rem} h2{font-size:1.25rem}
+  main{max-width:720px;margin:0 auto;padding:1.25rem 1rem 4rem}
+  header{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1.25rem}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.25rem;margin-bottom:1.25rem}
+  label{display:block;font:600 .95rem system-ui,sans-serif;margin:1rem 0 .35rem}
+  input[type=text],input[type=email],input[type=password],input[type=number],textarea{width:100%;padding:.8rem;border:1px solid var(--line);border-radius:10px;font:1rem system-ui,sans-serif;background:#fff;color:var(--ink)}
+  textarea{min-height:110px;resize:vertical}
+  :focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+  button{font:600 1rem system-ui,sans-serif;border:0;border-radius:10px;padding:.8rem 1.2rem;cursor:pointer;background:var(--accent);color:#fff}
+  button.ghost{background:var(--accent-2);color:var(--accent)}
+  button.danger{background:#fbe3e1;color:var(--bad)}
+  button:disabled{opacity:.6;cursor:wait}
+  .row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
+  .hint{color:var(--muted);font:.9rem system-ui,sans-serif;margin:.25rem 0 0}
+  .swatches{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.5rem}
+  .sw{position:relative;width:44px;height:44px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--line)}
+  .sw button{position:absolute;top:-6px;right:-6px;width:22px;height:22px;padding:0;border-radius:50%;background:var(--ink);font-size:.8rem;line-height:1}
+  input[type=color]{width:52px;height:44px;padding:2px;border:1px solid var(--line);border-radius:10px;background:#fff}
+  #preview{max-width:180px;border-radius:10px;margin-top:.6rem;display:none}
+  .item{display:flex;gap:.9rem;align-items:center;padding:.8rem 0;border-top:1px solid var(--line)}
+  .item:first-child{border-top:0}
+  .item img{width:64px;height:64px;object-fit:cover;border-radius:10px;background:var(--accent-2)}
+  .item .meta{flex:1;min-width:0}
+  .item .meta strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .dots{display:flex;gap:4px;margin-top:4px}
+  .dots i{width:14px;height:14px;border-radius:50%;border:1px solid var(--line)}
+  #toast{position:fixed;left:50%;bottom:1.25rem;transform:translateX(-50%);padding:.8rem 1.2rem;border-radius:10px;color:#fff;font:600 .95rem system-ui,sans-serif;display:none;z-index:9}
+  .hidden{display:none!important}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<main>
+
+  <!-- LOGIN -->
+  <section id="loginView" class="card hidden">
+    <h1>Joy’s product manager</h1>
+    <p class="hint">Sign in to add or change what shows on your website.</p>
+    <form id="loginForm">
+      <label for="email">Email</label>
+      <input id="email" type="email" autocomplete="username" required>
+      <label for="password">Password</label>
+      <input id="password" type="password" autocomplete="current-password" required>
+      <p style="margin-top:1.2rem"><button type="submit">Sign in</button></p>
+    </form>
+  </section>
+
+  <!-- ADMIN -->
+  <div id="adminView" class="hidden">
+    <header>
+      <h1>Your products</h1>
+      <button class="ghost" id="logoutBtn" type="button">Sign out</button>
+    </header>
+
+    <section class="card">
+      <h2 id="formTitle">Add a product</h2>
+      <form id="productForm">
+        <label for="title">Product name</label>
+        <input id="title" type="text" maxlength="120" required>
+
+        <label for="description">Description</label>
+        <textarea id="description" maxlength="1500"></textarea>
+
+        <label for="price">Price</label>
+        <input id="price" type="number" min="0" step="0.01" inputmode="decimal">
+
+        <label>Colors available</label>
+        <div class="row">
+          <input id="colorPicker" type="color" value="#a3335f" aria-label="Pick a color">
+          <button class="ghost" id="addColor" type="button">Add this color</button>
+        </div>
+        <div class="swatches" id="swatches"></div>
+        <p class="hint">Pick a color, then tap “Add this color”. Add as many as you need.</p>
+
+        <label for="image">Photo</label>
+        <input id="image" type="file" accept="image/*">
+        <img id="preview" alt="Photo preview">
+        <p class="hint">Use a clear, bright photo. It uploads when you save.</p>
+
+        <div class="row" style="margin-top:1.4rem">
+          <button type="submit" id="saveBtn">Save product</button>
+          <button type="button" class="ghost hidden" id="cancelEdit">Cancel edit</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Products on your site</h2>
+      <div id="list"><p class="hint">Loading…</p></div>
+    </section>
+  </div>
+</main>
+<div id="toast" role="status"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+/* ====== 1. PASTE YOUR SUPABASE DETAILS HERE ====== */
+const SUPABASE_URL = 'https://wskkrtcpufceolkvcovt.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_MLVLmaj2U_ta_9-lIRNQSg_vLMzesUp';
+/* ================================================== */
+
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const $ = id => document.getElementById(id);
+let colors = [], editing = null, currentImage = null;
+
+function toast(msg, bad){
+  const t = $('toast'); t.textContent = msg; t.style.background = bad ? 'var(--bad)' : 'var(--ok)';
+  t.style.display = 'block'; clearTimeout(toast.t); toast.t = setTimeout(()=>t.style.display='none', 3200);
+}
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ---------- auth ---------- */
+async function showView(){
+  const { data:{ session } } = await sb.auth.getSession();
+  $('loginView').classList.toggle('hidden', !!session);
+  $('adminView').classList.toggle('hidden', !session);
+  if (session) loadList();
+}
+$('loginForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const { error } = await sb.auth.signInWithPassword({ email:$('email').value.trim(), password:$('password').value });
+  if (error) return toast('Wrong email or password. Try again.', true);
+  showView();
+});
+$('logoutBtn').addEventListener('click', async () => { await sb.auth.signOut(); showView(); });
+
+/* ---------- colors ---------- */
+function drawSwatches(){
+  $('swatches').innerHTML = colors.map((c,i) =>
+    `<div class="sw" style="background:${esc(c)}"><button type="button" data-i="${i}" aria-label="Remove color">×</button></div>`).join('');
+}
+$('addColor').addEventListener('click', () => {
+  const c = $('colorPicker').value;
+  if (!colors.includes(c)) colors.push(c);
+  drawSwatches();
+});
+$('swatches').addEventListener('click', e => {
+  const b = e.target.closest('button[data-i]'); if (!b) return;
+  colors.splice(+b.dataset.i, 1); drawSwatches();
+});
+
+/* ---------- image preview ---------- */
+$('image').addEventListener('change', e => {
+  const f = e.target.files[0], p = $('preview');
+  if (!f) { p.style.display = currentImage ? 'block' : 'none'; return; }
+  p.src = URL.createObjectURL(f); p.style.display = 'block';
+});
+
+/* ---------- save ---------- */
+function resetForm(){
+  $('productForm').reset(); colors = []; editing = null; currentImage = null;
+  drawSwatches(); $('preview').style.display = 'none';
+  $('formTitle').textContent = 'Add a product'; $('cancelEdit').classList.add('hidden');
+}
+$('cancelEdit').addEventListener('click', resetForm);
+
+$('productForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = $('saveBtn'); btn.disabled = true; btn.textContent = 'Saving…';
+  try {
+    let image_url = currentImage;
+    const file = $('image').files[0];
+    if (file) {
+      const ext = (file.name.split('.').pop() || 'jpg').toLowerCase();
+      const path = `${Date.now()}-${Math.random().toString(36).slice(2,8)}.${ext}`;
+      const up = await sb.storage.from('product-images').upload(path, file, { cacheControl:'31536000' });
+      if (up.error) throw up.error;
+      image_url = sb.storage.from('product-images').getPublicUrl(path).data.publicUrl;
+    }
+    const row = {
+      title: $('title').value.trim(),
+      description: $('description').value.trim(),
+      price: $('price').value === '' ? null : parseFloat($('price').value),
+      colors, image_url
+    };
+    const q = editing ? sb.from('products').update(row).eq('id', editing) : sb.from('products').insert(row);
+    const { error } = await q;
+    if (error) throw error;
+    toast(editing ? 'Product updated.' : 'Product added. It’s live on your site.');
+    resetForm(); loadList();
+  } catch (err) {
+    console.error(err); toast('Could not save. Check your internet and try again.', true);
+  } finally { btn.disabled = false; btn.textContent = 'Save product'; }
+});
+
+/* ---------- list / edit / delete ---------- */
+let all = [];
+async function loadList(){
+  const { data, error } = await sb.from('products').select('*').order('created_at', { ascending:false });
+  if (error) { $('list').innerHTML = '<p class="hint">Could not load products. Refresh the page.</p>'; return; }
+  all = data;
+  $('list').innerHTML = data.length ? data.map(p => `
+    <div class="item">
+      <img src="${esc(p.image_url || '')}" alt="">
+      <div class="meta">
+        <strong>${esc(p.title)}</strong>
+        <span class="hint">${p.price != null ? '₦' + Number(p.price).toLocaleString() : 'No price'}</span>
+        <div class="dots">${(p.colors||[]).map(c=>`<i style="background:${esc(c)}"></i>`).join('')}</div>
+      </div>
+      <div class="row">
+        <button class="ghost" data-edit="${p.id}" type="button">Edit</button>
+        <button class="danger" data-del="${p.id}" type="button">Delete</button>
+      </div>
+    </div>`).join('') : '<p class="hint">No products yet. Add your first one above.</p>';
+}
+$('list').addEventListener('click', async e => {
+  const ed = e.target.closest('[data-edit]'), del = e.target.closest('[data-del]');
+  if (ed) {
+    const p = all.find(x => x.id === ed.dataset.edit); if (!p) return;
+    editing = p.id; currentImage = p.image_url; colors = [...(p.colors||[])];
+    $('title').value = p.title; $('description').value = p.description || ''; $('price').value = p.price ?? '';
+    drawSwatches();
+    if (p.image_url) { $('preview').src = p.image_url; $('preview').style.display = 'block'; }
+    $('formTitle').textContent = 'Edit product'; $('cancelEdit').classList.remove('hidden');
+    window.scrollTo({ top:0, behavior:'smooth' });
+  }
+  if (del) {
+    if (!confirm('Delete this product from your site?')) return;
+    const { error } = await sb.from('products').delete().eq('id', del.dataset.del);
+    if (error) return toast('Could not delete. Try again.', true);
+    toast('Product deleted.'); loadList();
+  }
+});
+
+sb.auth.onAuthStateChange(() => showView());
+showView();
+</script>
+</body>
+</html>

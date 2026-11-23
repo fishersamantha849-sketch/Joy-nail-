@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shop | Joy Nail Artistry</title>
+<meta name="theme-color" content="#0A0A0A">
+<meta name="description" content="Browse nail products and designs by Joy Nail Artistry in Osogbo.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/bodoni-moda-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/motion.css">
+<script src="js/demo-api.js"></script>
+<script src="js/common.js"></script>
+<style>
+  .shop-hero{padding:150px 0 30px}
+  .shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px;padding-bottom:90px}
+  .p-card{background:#141414;border:1px solid rgba(255,255,255,.09);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+  .p-card .p-img{aspect-ratio:4/5;background:#1c1c1c;overflow:hidden}
+  .p-card img{width:100%;height:100%;object-fit:cover;display:block}
+  .p-body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .p-body h3{margin:0;font-family:var(--f-display,'Bodoni Moda',serif);font-weight:500;font-size:24px;line-height:1.15}
+  .p-body p{margin:0;color:rgba(255,255,255,.68);font-size:15px;line-height:1.55}
+  .p-price{font-weight:700;font-size:18px;color:#FFA3DF}
+  .p-dots{display:flex;gap:7px;flex-wrap:wrap}
+  .p-dots i{width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.35)}
+  .p-foot{margin-top:auto;padding-top:6px}
+  .shop-msg{grid-column:1/-1;text-align:center;color:rgba(255,255,255,.7);padding:60px 0}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="nav" id="nav">
+  <div class="container">
+    <a class="wordmark" href="index.html" aria-label="Joy Nail Artistry — home">
+      <span class="wm-joy">JOY<i>.</i></span><span class="wm-sub">Nail Artistry</span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="products.html" aria-current="page">Shop</a></li>
+        <li><a href="index.html#gallery">Gallery</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-right">
+      <a class="btn btn-primary btn-sm btn-book-nav" href="book.html">Book Now</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <ul>
+    <li><a href="index.html">Home <span>01</span></a></li>
+    <li><a href="index.html#services">Services <span>02</span></a></li>
+    <li><a href="products.html">Shop <span>03</span></a></li>
+    <li><a href="index.html#gallery">Gallery <span>04</span></a></li>
+    <li><a href="index.html#contact">Contact <span>05</span></a></li>
+  </ul>
+  <div class="mm-foot"><a class="btn btn-primary btn-block" href="book.html">Book Now</a></div>
+</div>
+
+<main id="main">
+  <section class="shop-hero">
+    <div class="container">
+      <p class="eyebrow">Shop</p>
+      <h1 class="h2">Joy's <em>collection.</em></h1>
+      <p class="lede" style="max-width:52ch">Browse what Joy has available. Like something? Book an appointment and tell her which one you want.</p>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <div class="shop-grid" id="products"><p class="shop-msg">Loading…</p></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© <span data-year></span> Joy Nail Artistry. All rights reserved.</span>
+      <span>Mon – Sat · 10:00 AM – 7:00 PM</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+(async () => {
+  const SUPABASE_URL = 'https://wskkrtcpufceolkvcovt.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_MLVLmaj2U_ta_9-lIRNQSg_vLMzesUp';
+  const box = document.getElementById('products');
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  try {
+    const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const { data, error } = await sb.from('products').select('*').order('created_at', { ascending:false });
+    if (error) throw error;
+    if (!data.length) { box.innerHTML = '<p class="shop-msg">New designs are coming soon. Check back shortly.</p>'; return; }
+    box.innerHTML = data.map(p => `
+      <article class="p-card">
+        <div class="p-img">${p.image_url ? `<img src="${esc(p.image_url)}" alt="${esc(p.title)}" loading="lazy" decoding="async">` : ''}</div>
+        <div class="p-body">
+          <h3>${esc(p.title)}</h3>
+          ${p.description ? `<p>${esc(p.description)}</p>` : ''}
+          ${(p.colors||[]).length ? `<div class="p-dots" aria-label="Available colors">${p.colors.map(c=>`<i style="background:${esc(c)}"></i>`).join('')}</div>` : ''}
+          ${p.price != null ? `<span class="p-price">₦${Number(p.price).toLocaleString()}</span>` : ''}
+          <div class="p-foot"><a class="btn btn-primary btn-sm" href="book.html">Book this</a></div>
+        </div>
+      </article>`).join('');
+  } catch (e) {
+    console.error(e);
+    box.innerHTML = '<p class="shop-msg">Products are unavailable right now. Please try again soon.</p>';
+  }
+})();
+</script>
+</body>
+</html>
