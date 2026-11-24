@@ -261,7 +261,7 @@ $('list').addEventListener('click', async e => {
   }
 });
 
-if (sb) { sb.auth.onAuthStateChange(() => showView()); showView(); }
+if (sb) { sb.auth.onAuthStateChange(() => { setTimeout(showView, 0); }); showView(); }
 </script>
 </body>
 </html>
