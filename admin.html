@@ -56,7 +56,9 @@
       <input id="email" type="email" autocomplete="username" required>
       <label for="password">Password</label>
       <input id="password" type="password" autocomplete="current-password" required>
-      <p style="margin-top:1.2rem"><button type="submit">Sign in</button></p>
+      <label style="display:flex;gap:.5rem;align-items:center;font-weight:400;margin-top:.6rem"><input type="checkbox" id="showPw"> Show password</label>
+      <p style="margin-top:1.2rem"><button type="submit" id="loginBtn">Sign in</button></p>
+      <p id="loginErr" role="alert" style="color:var(--bad);font:600 .95rem system-ui,sans-serif;min-height:1.4em;margin:.8rem 0 0"></p>
     </form>
   </section>
 
@@ -138,10 +140,19 @@ async function showView(){
 }
 $('loginForm').addEventListener('submit', async e => {
   e.preventDefault();
-  const { error } = await sb.auth.signInWithPassword({ email:$('email').value.trim(), password:$('password').value });
-  if (error) { console.error(error); return toast('Login failed: ' + error.message, true); }
-  showView();
+  const btn = $('loginBtn'), err = $('loginErr');
+  err.textContent = '';
+  if (!sb) { err.textContent = 'The login system did not load. Refresh the page and try again.'; return; }
+  btn.disabled = true; btn.textContent = 'Signing in…';
+  try {
+    const { error } = await sb.auth.signInWithPassword({ email:$('email').value.trim(), password:$('password').value });
+    if (error) { console.error(error); err.textContent = 'Could not sign in: ' + error.message; }
+    else await showView();
+  } catch (ex) {
+    console.error(ex); err.textContent = 'Something went wrong: ' + ex.message;
+  } finally { btn.disabled = false; btn.textContent = 'Sign in'; }
 });
+$('showPw').addEventListener('change', e => { $('password').type = e.target.checked ? 'text' : 'password'; });
 $('logoutBtn').addEventListener('click', async () => { await sb.auth.signOut(); showView(); });
 
 /* ---------- colors ---------- */
