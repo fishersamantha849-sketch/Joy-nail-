@@ -6,128 +6,102 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Joy Nail Artistry – Manage products</title>
 <style>
-  :root{--bg:#0A0A0A;--card:#131313;--ink:#F4F1F3;--muted:#B3AEB1;--accent:#FF35B9;--soft:#FFA3DF;--accent-2:#2A1722;--line:#2A2A2A;--ok:#2f9d6b;--bad:#FF6B8A;color-scheme:dark}
-  @font-face{font-family:"Manrope";src:url(fonts/manrope-latin-wght-normal.woff2) format("woff2");font-weight:200 800;font-display:swap}
-  @font-face{font-family:"Bodoni Moda";src:url(fonts/bodoni-moda-latin-standard-normal.woff2) format("woff2");font-weight:400 900;font-display:swap}
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 'Manrope',system-ui,sans-serif}
-  h1,h2{font-family:'Bodoni Moda',Georgia,serif;font-weight:500;margin:0 0 .5rem}
-  h1{font-size:1.7rem} h2{font-size:1.25rem}
-  main{max-width:720px;margin:0 auto;padding:1.25rem 1rem 4rem}
-  header{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1.25rem}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.25rem;margin-bottom:1.25rem}
-  label{display:block;font:600 .95rem system-ui,sans-serif;margin:1rem 0 .35rem}
-  input[type=text],input[type=email],input[type=password],input[type=number],textarea{width:100%;padding:.8rem;border:1px solid var(--line);border-radius:10px;font:1rem system-ui,sans-serif;background:#1B1B1B;color:var(--ink)}
-  textarea{min-height:110px;resize:vertical}
-  :focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-  button{font:600 1rem system-ui,sans-serif;border:0;border-radius:10px;padding:.8rem 1.2rem;cursor:pointer;background:var(--accent);color:#0A0A0A}
-  button.ghost{background:var(--accent-2);color:var(--soft)}
-  button.danger{background:#2b1218;color:var(--bad)}
-  button:disabled{opacity:.6;cursor:wait}
-  .row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
-  .hint{color:var(--muted);font:.9rem system-ui,sans-serif;margin:.25rem 0 0}
-  .swatches{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.5rem}
-  .sw{position:relative;width:44px;height:44px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--line)}
-  .sw button{position:absolute;top:-6px;right:-6px;width:22px;height:22px;padding:0;border-radius:50%;background:var(--ink);color:var(--bg);font-size:.8rem;line-height:1}
-  input[type=color]{width:52px;height:44px;padding:2px;border:1px solid var(--line);border-radius:10px;background:#1B1B1B}
-  .pv{position:relative;display:inline-block;margin-top:.6rem}#preview{max-width:200px;border-radius:12px;display:block}#rmPhoto{position:absolute;top:-10px;right:-10px;width:32px;height:32px;padding:0;border-radius:50%;background:var(--ink);color:var(--bg);font-size:1.2rem;line-height:1}
-  .item{display:flex;gap:.9rem;align-items:center;padding:.8rem 0;border-top:1px solid var(--line)}
-  .item:first-child{border-top:0}
-  .item img{width:64px;height:64px;object-fit:cover;border-radius:10px;background:var(--accent-2)}
-  .item .meta{flex:1;min-width:0}
-  .item .meta strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .dots{display:flex;gap:4px;margin-top:4px}
-  .dots i{width:14px;height:14px;border-radius:50%;border:1px solid var(--line)}
-  #toast{position:fixed;left:50%;bottom:1.25rem;transform:translateX(-50%);padding:.8rem 1.2rem;border-radius:10px;color:#fff;font:600 .95rem system-ui,sans-serif;display:none;z-index:9}
-  .hidden{display:none!important}
-  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+:root{--bg:#0A0A0A;--card:#131313;--ink:#F4F1F3;--muted:#B3AEB1;--accent:#FF35B9;--soft:#FFA3DF;--soft-bg:#2A1722;--line:#2A2A2A;--ok:#2f9d6b;--bad:#FF6B8A;color-scheme:dark}
+@font-face{font-family:"Manrope";src:url(fonts/manrope-latin-wght-normal.woff2) format("woff2");font-weight:200 800;font-display:swap}
+@font-face{font-family:"Bodoni Moda";src:url(fonts/bodoni-moda-latin-standard-normal.woff2) format("woff2");font-weight:400 900;font-display:swap}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 'Manrope',system-ui,sans-serif}
+h1,h2{font-family:'Bodoni Moda',Georgia,serif;font-weight:500;margin:0 0 .4rem}
+h1{font-size:1.8rem}h2{font-size:1.35rem}
+main{max-width:920px;margin:0 auto;padding:1.25rem 1rem 4rem}
+header{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.25rem;margin-bottom:1.25rem}
+.hint{color:var(--muted);font-size:.92rem;margin:.2rem 0 .8rem}
+label.l{display:block;font-weight:600;margin:1rem 0 .35rem}
+input[type=text],input[type=email],input[type=password],input[type=number],textarea{width:100%;padding:.75rem;border:1px solid var(--line);border-radius:10px;font:inherit;background:#1B1B1B;color:var(--ink)}
+textarea{min-height:76px;resize:vertical}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+button{font:600 1rem 'Manrope',system-ui,sans-serif;border:0;border-radius:10px;padding:.75rem 1.15rem;cursor:pointer;background:var(--accent);color:#0A0A0A}
+button.ghost,.chg{background:var(--soft-bg);color:var(--soft)}
+button.danger{background:#2b1218;color:var(--bad)}
+button.sm{padding:.45rem .8rem;font-size:.9rem}
+button:disabled{opacity:.6;cursor:wait}
+.row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
+.drop{display:flex;flex-direction:column;align-items:center;gap:.3rem;text-align:center;padding:2rem 1rem;border:2px dashed #5a2a46;border-radius:16px;background:var(--soft-bg);color:var(--soft);cursor:pointer}
+.drop b{font-size:1.2rem}.drop span{color:var(--muted);font-size:.92rem}
+.drop.over{border-color:var(--accent);background:#3a1a2c}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin-top:1rem}
+.pc{background:#181818;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.pimg{position:relative;aspect-ratio:4/5;background:#222}
+.pimg img{width:100%;height:100%;object-fit:cover;display:block}
+.x{position:absolute;top:8px;right:8px;width:34px;height:34px;padding:0;border-radius:50%;background:var(--ink);color:var(--bg);font-size:1.3rem;line-height:1}
+.chg{position:absolute;left:8px;bottom:8px;padding:.4rem .8rem;border-radius:10px;font-weight:600;font-size:.9rem;cursor:pointer}
+.pbody{padding:.9rem;display:flex;flex-direction:column;gap:.6rem;flex:1}
+.pbody h3{margin:0;font:500 1.2rem 'Bodoni Moda',serif}
+.pbody p{margin:0;color:var(--muted);font-size:.93rem}
+.price{font-weight:700;color:var(--soft)}
+.cl{display:flex;gap:.45rem;flex-wrap:wrap;align-items:center}
+.cd{position:relative;width:30px;height:30px;border-radius:50%;border:2px solid #fff}
+.cd button{position:absolute;top:-8px;right:-8px;width:20px;height:20px;padding:0;border-radius:50%;background:var(--ink);color:var(--bg);font-size:.75rem;line-height:1}
+.dot{width:18px;height:18px;border-radius:50%;border:1px solid #555;display:inline-block}
+input[type=color]{width:40px;height:34px;padding:2px;border:1px solid var(--line);border-radius:8px;background:#1B1B1B}
+.st{color:var(--bad)!important;font-weight:600;min-height:1.2em}
+#toast{position:fixed;left:50%;bottom:1.25rem;transform:translateX(-50%);padding:.8rem 1.2rem;border-radius:10px;color:#fff;font-weight:600;display:none;z-index:9}
+.hidden{display:none!important}
 </style>
 </head>
 <body>
 <main>
-  <p id="fatal" class="card hidden" style="color:var(--bad);font:600 1rem system-ui,sans-serif"></p>
+<p id="fatal" class="card hidden" style="color:var(--bad);font-weight:600"></p>
 
-  <!-- LOGIN -->
-  <section id="loginView" class="card">
-    <h1>Joy’s product manager</h1>
-    <p class="hint">Sign in to add or change what shows on your website.</p>
-    <form id="loginForm">
-      <label for="email">Email</label>
-      <input id="email" type="email" autocomplete="username" required>
-      <label for="password">Password</label>
-      <input id="password" type="password" autocomplete="current-password" required>
-      <label style="display:flex;gap:.5rem;align-items:center;font-weight:400;margin-top:.6rem"><input type="checkbox" id="showPw"> Show password</label>
-      <p style="margin-top:1.2rem"><button type="submit" id="loginBtn">Sign in</button></p>
-      <p id="loginErr" role="alert" style="color:var(--bad);font:600 .95rem system-ui,sans-serif;min-height:1.4em;margin:.8rem 0 0"></p>
-    </form>
+<section id="loginView" class="card">
+  <h1>Joy’s product manager</h1>
+  <p class="hint">Sign in to add or change what shows on your website.</p>
+  <form id="loginForm">
+    <label class="l" for="email">Email</label>
+    <input id="email" type="email" autocomplete="username" required>
+    <label class="l" for="password">Password</label>
+    <input id="password" type="password" autocomplete="current-password" required>
+    <label style="display:flex;gap:.5rem;align-items:center;margin-top:.6rem"><input type="checkbox" id="showPw"> Show password</label>
+    <p style="margin-top:1.2rem"><button type="submit" id="loginBtn">Sign in</button></p>
+    <p id="loginErr" role="alert" style="color:var(--bad);font-weight:600;min-height:1.4em;margin:.8rem 0 0"></p>
+  </form>
+</section>
+
+<div id="adminView" class="hidden">
+  <header><h1>Your products</h1><button class="ghost" id="logoutBtn" type="button">Sign out</button></header>
+
+  <section class="card">
+    <h2>Add new products</h2>
+    <p class="hint">Add your photos, then fill in a name, price and colors for each one. When you’re ready, tap Save.</p>
+    <label class="drop" id="drop" for="pick"><b>＋ Add photos</b><span>Tap to choose, or drop photos here. You can add as many as you like.</span></label>
+    <input id="pick" type="file" accept="image/*" multiple hidden>
+    <div class="grid" id="queue"></div>
+    <div id="saveAllRow" class="hidden" style="margin-top:1.2rem"><button id="saveAll" type="button">Save product</button></div>
   </section>
 
-  <!-- ADMIN -->
-  <div id="adminView" class="hidden">
-    <header>
-      <h1>Your products</h1>
-      <button class="ghost" id="logoutBtn" type="button">Sign out</button>
-    </header>
-
-    <section class="card">
-      <h2 id="formTitle">Add a product</h2>
-      <form id="productForm">
-        <label for="title">Product name</label>
-        <input id="title" type="text" maxlength="120" required>
-
-        <label for="description">Description</label>
-        <textarea id="description" maxlength="1500"></textarea>
-
-        <label for="price">Price</label>
-        <input id="price" type="number" min="0" step="0.01" inputmode="decimal">
-
-        <label>Colors available</label>
-        <div class="row">
-          <input id="colorPicker" type="color" value="#a3335f" aria-label="Pick a color">
-          <button class="ghost" id="addColor" type="button">Add this color</button>
-        </div>
-        <div class="swatches" id="swatches"></div>
-        <p class="hint">Pick a color, then tap “Add this color”. Add as many as you need.</p>
-
-        <label for="image">Photo</label>
-        <input id="image" type="file" accept="image/*">
-        <div id="pv" class="pv hidden"><img id="preview" alt="Photo preview"><button type="button" id="rmPhoto" aria-label="Remove this photo">×</button></div>
-        <p class="hint">Use a clear, bright photo. It uploads when you save. Tap the × on the photo to remove it or pick a different one.</p>
-
-        <div class="row" style="margin-top:1.4rem">
-          <button type="submit" id="saveBtn">Save product</button>
-          <button type="button" class="ghost hidden" id="cancelEdit">Cancel edit</button>
-        </div>
-      </form>
-    </section>
-
-    <section class="card">
-      <h2>Products on your site</h2>
-      <div id="list"><p class="hint">Loading…</p></div>
-    </section>
-  </div>
+  <section class="card">
+    <h2>On your website now</h2>
+    <div class="grid" id="list"><p class="hint">Loading…</p></div>
+  </section>
+</div>
 </main>
 <div id="toast" role="status"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script>
-/* ====== 1. PASTE YOUR SUPABASE DETAILS HERE ====== */
 const SUPABASE_URL = 'https://wskkrtcpufceolkvcovt.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_MLVLmaj2U_ta_9-lIRNQSg_vLMzesUp';
-/* ================================================== */
-
-function fatal(msg){ const f=document.getElementById('fatal'); f.textContent=msg; f.classList.remove('hidden'); }
-if (typeof supabase === 'undefined') { fatal('Could not load the login system. Check your internet and refresh the page.'); }
-let sb;
-try { sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); } catch (e) { console.error(e); fatal('Setup problem: ' + e.message); }
 const $ = id => document.getElementById(id);
-let colors = [], editing = null, currentImage = null;
-
-function toast(msg, bad){
-  const t = $('toast'); t.textContent = msg; t.style.background = bad ? 'var(--bad)' : 'var(--ok)';
-  t.style.display = 'block'; clearTimeout(toast.t); toast.t = setTimeout(()=>t.style.display='none', 3200);
-}
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function toast(msg, bad){ const t=$('toast'); t.textContent=msg; t.style.background=bad?'#b3261e':'var(--ok)'; t.style.display='block'; clearTimeout(toast.t); toast.t=setTimeout(()=>t.style.display='none',3500); }
+function fatal(msg){ const f=$('fatal'); f.textContent=msg; f.classList.remove('hidden'); }
+let sb;
+if (typeof supabase === 'undefined') fatal('Could not load the login system. Check your internet and refresh the page.');
+else { try { sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); } catch (e) { fatal('Setup problem: ' + e.message); } }
+
+let queue = [], products = [], ed = null, uid = 0;
+const EDIT_FOOT = '<div class="row"><button type="button" data-act="saveed">Save changes</button><button type="button" class="ghost" data-act="cancel">Cancel</button></div>';
 
 /* ---------- auth ---------- */
 async function showView(){
@@ -140,126 +114,145 @@ async function showView(){
 }
 $('loginForm').addEventListener('submit', async e => {
   e.preventDefault();
-  const btn = $('loginBtn'), err = $('loginErr');
-  err.textContent = '';
-  if (!sb) { err.textContent = 'The login system did not load. Refresh the page and try again.'; return; }
-  btn.disabled = true; btn.textContent = 'Signing in…';
+  const btn=$('loginBtn'), err=$('loginErr'); err.textContent='';
+  if (!sb) { err.textContent='The login system did not load. Refresh and try again.'; return; }
+  btn.disabled=true; btn.textContent='Signing in…';
   try {
     const { error } = await sb.auth.signInWithPassword({ email:$('email').value.trim(), password:$('password').value });
-    if (error) { console.error(error); err.textContent = 'Could not sign in: ' + error.message; }
-    else await showView();
-  } catch (ex) {
-    console.error(ex); err.textContent = 'Something went wrong: ' + ex.message;
-  } finally { btn.disabled = false; btn.textContent = 'Sign in'; }
+    if (error) { console.error(error); err.textContent='Could not sign in: '+error.message; } else await showView();
+  } catch (ex) { console.error(ex); err.textContent='Something went wrong: '+ex.message; }
+  finally { btn.disabled=false; btn.textContent='Sign in'; }
 });
 $('showPw').addEventListener('change', e => { $('password').type = e.target.checked ? 'text' : 'password'; });
 $('logoutBtn').addEventListener('click', async () => { await sb.auth.signOut(); showView(); });
 
-/* ---------- colors ---------- */
-function drawSwatches(){
-  $('swatches').innerHTML = colors.map((c,i) =>
-    `<div class="sw" style="background:${esc(c)}"><button type="button" data-i="${i}" aria-label="Remove color">×</button></div>`).join('');
-}
-$('addColor').addEventListener('click', () => {
-  const c = $('colorPicker').value;
-  if (!colors.includes(c)) colors.push(c);
-  drawSwatches();
-});
-$('swatches').addEventListener('click', e => {
-  const b = e.target.closest('button[data-i]'); if (!b) return;
-  colors.splice(+b.dataset.i, 1); drawSwatches();
-});
-
-/* ---------- image preview ---------- */
-let origImage = null;
-function showPv(src){ $('preview').src = src; $('pv').classList.remove('hidden'); }
-function hidePv(){ $('pv').classList.add('hidden'); $('preview').removeAttribute('src'); }
-$('image').addEventListener('change', e => {
-  const f = e.target.files[0];
-  if (f) showPv(URL.createObjectURL(f)); else if (currentImage) showPv(currentImage); else hidePv();
-});
-$('rmPhoto').addEventListener('click', () => { $('image').value = ''; currentImage = null; hidePv(); });
-async function removeStored(url){
-  try { const path = (url || '').split('/product-images/')[1]; if (path) await sb.storage.from('product-images').remove([decodeURIComponent(path)]); } catch (e) { console.error(e); }
-}
-
-/* ---------- save ---------- */
-function resetForm(){
-  $('productForm').reset(); colors = []; editing = null; currentImage = null;
-  drawSwatches(); hidePv(); origImage = null;
-  $('formTitle').textContent = 'Add a product'; $('cancelEdit').classList.add('hidden');
-}
-$('cancelEdit').addEventListener('click', resetForm);
-
-$('productForm').addEventListener('submit', async e => {
-  e.preventDefault();
-  const btn = $('saveBtn'); btn.disabled = true; btn.textContent = 'Saving…';
+/* ---------- photo helpers ---------- */
+async function shrink(file){
   try {
-    let image_url = currentImage;
-    const file = $('image').files[0];
-    if (file) {
-      const ext = (file.name.split('.').pop() || 'jpg').toLowerCase();
-      const path = `${Date.now()}-${Math.random().toString(36).slice(2,8)}.${ext}`;
-      const up = await sb.storage.from('product-images').upload(path, file, { cacheControl:'31536000' });
-      if (up.error) throw up.error;
-      image_url = sb.storage.from('product-images').getPublicUrl(path).data.publicUrl;
-    }
-    const row = {
-      title: $('title').value.trim(),
-      description: $('description').value.trim(),
-      price: $('price').value === '' ? null : parseFloat($('price').value),
-      colors, image_url
-    };
-    const q = editing ? sb.from('products').update(row).eq('id', editing) : sb.from('products').insert(row);
-    const { error } = await q;
-    if (error) throw error;
-    if (origImage && origImage !== image_url) await removeStored(origImage);
-    toast(editing ? 'Product updated.' : 'Product added. It’s live on your site.');
-    resetForm(); loadList();
-  } catch (err) {
-    console.error(err); toast('Could not save. Check your internet and try again.', true);
-  } finally { btn.disabled = false; btn.textContent = 'Save product'; }
-});
+    const bm = await createImageBitmap(file), r = Math.min(1, 1600/Math.max(bm.width, bm.height));
+    const c = document.createElement('canvas'); c.width = Math.round(bm.width*r); c.height = Math.round(bm.height*r);
+    c.getContext('2d').drawImage(bm, 0, 0, c.width, c.height);
+    return await new Promise(res => c.toBlob(b => res(b || file), 'image/jpeg', .85));
+  } catch { return file; }
+}
+async function upload(file){
+  const blob = await shrink(file), path = `${Date.now()}-${Math.random().toString(36).slice(2,8)}.jpg`;
+  const up = await sb.storage.from('product-images').upload(path, blob, { contentType: blob.type || 'image/jpeg', cacheControl:'31536000' });
+  if (up.error) throw up.error;
+  return sb.storage.from('product-images').getPublicUrl(path).data.publicUrl;
+}
+async function removeStored(url){
+  try { const p = (url||'').split('/product-images/')[1]; if (p) await sb.storage.from('product-images').remove([decodeURIComponent(p)]); } catch (e) { console.error(e); }
+}
 
-/* ---------- list / edit / delete ---------- */
-let all = [];
+/* ---------- drawing ---------- */
+const dots = cs => cs.map((c,i) => `<span class="cd" style="background:${esc(c)}"><button type="button" data-act="rmc" data-i="${i}" aria-label="Remove color">×</button></span>`).join('');
+function editor(o, extra, foot){
+  return `<article class="pc" data-id="${o.id}">
+    <div class="pimg">${o.preview ? `<img src="${esc(o.preview)}" alt="">` : ''}${extra}</div>
+    <div class="pbody">
+      <input data-f="title" type="text" maxlength="120" placeholder="Product name" aria-label="Product name" value="${esc(o.title)}">
+      <textarea data-f="description" maxlength="1500" placeholder="Short description (optional)" aria-label="Description">${esc(o.description)}</textarea>
+      <input data-f="price" type="number" min="0" step="0.01" inputmode="decimal" placeholder="Price in ₦" aria-label="Price" value="${esc(o.price)}">
+      <div class="cl">${dots(o.colors)}<input data-f="cp" type="color" value="${esc(o.cp)}" aria-label="Pick a color"><button type="button" class="ghost sm" data-act="addc">+ Add color</button></div>
+      <p class="st" role="status">${esc(o.msg || '')}</p>${foot}
+    </div></article>`;
+}
+function drawQueue(){
+  $('queue').innerHTML = queue.map(o => editor(o, '<button class="x" type="button" data-act="rm" aria-label="Remove this photo">×</button>', '')).join('');
+  $('saveAllRow').classList.toggle('hidden', !queue.length);
+  $('saveAll').textContent = queue.length > 1 ? `Save all ${queue.length} products` : 'Save product';
+}
+function drawList(){
+  $('list').innerHTML = products.length ? products.map(p => {
+    if (ed && ed.id === p.id) return editor(ed, '<label class="chg">Change photo<input type="file" accept="image/*" data-photo hidden></label>', EDIT_FOOT);
+    return `<article class="pc" data-id="${p.id}">
+      <div class="pimg">${p.image_url ? `<img src="${esc(p.image_url)}" alt="${esc(p.title)}">` : ''}</div>
+      <div class="pbody"><h3>${esc(p.title)}</h3>${p.description ? `<p>${esc(p.description)}</p>` : ''}
+        <div class="cl">${(p.colors||[]).map(c => `<i class="dot" style="background:${esc(c)}"></i>`).join('')}</div>
+        ${p.price != null ? `<span class="price">₦${Number(p.price).toLocaleString()}</span>` : ''}
+        <div class="row" style="margin-top:auto"><button class="ghost sm" type="button" data-act="edit">Edit</button><button class="danger sm" type="button" data-act="del">Delete</button></div>
+      </div></article>`;
+  }).join('') : '<p class="hint">No products yet. Add your first photos above.</p>';
+}
 async function loadList(){
   const { data, error } = await sb.from('products').select('*').order('created_at', { ascending:false });
   if (error) { console.error(error); $('list').innerHTML = '<p class="hint">Could not load products: ' + esc(error.message) + '</p>'; return; }
-  all = data;
-  $('list').innerHTML = data.length ? data.map(p => `
-    <div class="item">
-      <img src="${esc(p.image_url || '')}" alt="">
-      <div class="meta">
-        <strong>${esc(p.title)}</strong>
-        <span class="hint">${p.price != null ? '₦' + Number(p.price).toLocaleString() : 'No price'}</span>
-        <div class="dots">${(p.colors||[]).map(c=>`<i style="background:${esc(c)}"></i>`).join('')}</div>
-      </div>
-      <div class="row">
-        <button class="ghost" data-edit="${p.id}" type="button">Edit</button>
-        <button class="danger" data-del="${p.id}" type="button">Delete</button>
-      </div>
-    </div>`).join('') : '<p class="hint">No products yet. Add your first one above.</p>';
+  products = data; drawList();
 }
-$('list').addEventListener('click', async e => {
-  const ed = e.target.closest('[data-edit]'), del = e.target.closest('[data-del]');
-  if (ed) {
-    const p = all.find(x => x.id === ed.dataset.edit); if (!p) return;
-    editing = p.id; currentImage = p.image_url; colors = [...(p.colors||[])];
-    $('title').value = p.title; $('description').value = p.description || ''; $('price').value = p.price ?? '';
-    drawSwatches();
-    origImage = p.image_url; if (p.image_url) showPv(p.image_url);
-    $('formTitle').textContent = 'Edit product'; $('cancelEdit').classList.remove('hidden');
-    window.scrollTo({ top:0, behavior:'smooth' });
-  }
-  if (del) {
-    if (!confirm('Delete this product from your site?')) return;
-    const { error } = await sb.from('products').delete().eq('id', del.dataset.del);
-    if (error) return toast('Could not delete. Try again.', true);
-    const gone = all.find(x => x.id === del.dataset.del); if (gone && gone.image_url) await removeStored(gone.image_url);
-    toast('Product deleted.'); loadList();
+
+/* ---------- adding photos ---------- */
+function addFiles(files){
+  [...files].filter(f => f.type.startsWith('image/')).forEach(f => queue.push({ id:'q'+(++uid), file:f, preview:URL.createObjectURL(f), title:'', description:'', price:'', colors:[], cp:'#FF35B9', msg:'' }));
+  drawQueue();
+}
+$('pick').addEventListener('change', e => { addFiles(e.target.files); e.target.value = ''; });
+['dragenter','dragover'].forEach(n => $('drop').addEventListener(n, e => { e.preventDefault(); $('drop').classList.add('over'); }));
+['dragleave','drop'].forEach(n => $('drop').addEventListener(n, e => { e.preventDefault(); $('drop').classList.remove('over'); }));
+$('drop').addEventListener('drop', e => addFiles(e.dataTransfer.files));
+
+/* ---------- typing, clicks ---------- */
+const obj = id => queue.find(x => x.id === id) || (ed && ed.id === id ? ed : null);
+document.addEventListener('input', e => {
+  const f = e.target.dataset && e.target.dataset.f; if (!f) return;
+  const o = obj(e.target.closest('[data-id]')?.dataset.id); if (o) o[f] = e.target.value;
+});
+document.addEventListener('change', e => {
+  if (e.target.matches && e.target.matches('[data-photo]') && ed) {
+    const f = e.target.files[0]; if (f) { ed.file = f; ed.preview = URL.createObjectURL(f); drawList(); }
   }
 });
+const row = o => ({ title:o.title.trim(), description:o.description.trim(), price:(o.price === '' || o.price == null) ? null : parseFloat(o.price), colors:o.colors });
+
+async function saveAll(){
+  const btn = $('saveAll'); btn.disabled = true; let ok = 0;
+  for (const o of [...queue]) {
+    if (!o.title.trim()) { o.msg = 'Please add a name.'; drawQueue(); continue; }
+    o.msg = 'Saving…'; drawQueue();
+    try {
+      const image_url = await upload(o.file);
+      const { error } = await sb.from('products').insert({ ...row(o), image_url });
+      if (error) throw error;
+      queue = queue.filter(x => x !== o); ok++;
+    } catch (err) { console.error(err); o.msg = 'Could not save: ' + err.message; }
+    drawQueue();
+  }
+  btn.disabled = false;
+  if (ok) { toast(ok + (ok > 1 ? ' products are' : ' product is') + ' now on your website.'); await loadList(); }
+}
+async function saveEdit(){
+  if (!ed.title.trim()) { ed.msg = 'Please add a name.'; drawList(); return; }
+  ed.msg = 'Saving…'; drawList();
+  try {
+    let image_url = ed.orig; if (ed.file) image_url = await upload(ed.file);
+    const { error } = await sb.from('products').update({ ...row(ed), image_url }).eq('id', ed.id);
+    if (error) throw error;
+    if (ed.file && ed.orig) await removeStored(ed.orig);
+    ed = null; toast('Saved.'); await loadList();
+  } catch (err) { console.error(err); ed.msg = 'Could not save: ' + err.message; drawList(); }
+}
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-act]'); if (!b) return;
+  const act = b.dataset.act, id = b.closest('[data-id]')?.dataset.id, o = obj(id);
+  const redraw = () => queue.some(x => x.id === id) ? drawQueue() : drawList();
+  if (act === 'rm') { queue = queue.filter(x => x.id !== id); drawQueue(); }
+  else if (act === 'addc' && o) { if (!o.colors.includes(o.cp)) o.colors.push(o.cp); redraw(); }
+  else if (act === 'rmc' && o) { o.colors.splice(+b.dataset.i, 1); redraw(); }
+  else if (act === 'edit') {
+    const p = products.find(x => x.id === id); if (!p) return;
+    ed = { id:p.id, title:p.title, description:p.description || '', price:p.price, colors:[...(p.colors||[])], cp:'#FF35B9', preview:p.image_url, orig:p.image_url, file:null, msg:'' };
+    drawList();
+  }
+  else if (act === 'cancel') { ed = null; drawList(); }
+  else if (act === 'saveed' && ed) await saveEdit();
+  else if (act === 'del') {
+    const p = products.find(x => x.id === id); if (!p || !confirm('Delete “' + p.title + '” from your website?')) return;
+    const { error } = await sb.from('products').delete().eq('id', id);
+    if (error) return toast('Could not delete: ' + error.message, true);
+    await removeStored(p.image_url); toast('Deleted.'); loadList();
+  }
+});
+$('saveAll').addEventListener('click', saveAll);
 
 if (sb) { sb.auth.onAuthStateChange(() => { setTimeout(showView, 0); }); showView(); }
 </script>
