@@ -47,6 +47,30 @@ button:disabled{opacity:.6;cursor:wait}
 input[type=color]{width:40px;height:34px;padding:2px;border:1px solid var(--line);border-radius:8px;background:#1B1B1B}
 .st{color:var(--bad)!important;font-weight:600;min-height:1.2em}
 #toast{position:fixed;left:50%;bottom:1.25rem;transform:translateX(-50%);padding:.8rem 1.2rem;border-radius:10px;color:#fff;font-weight:600;display:none;z-index:9}
+
+.shell{display:flex;min-height:100vh}
+.side{width:230px;flex:none;background:#101010;border-right:1px solid var(--line);padding:1.1rem .8rem;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:1rem}
+.brand{font:500 1.7rem 'Bodoni Moda',serif;padding:0 .6rem}.brand i{color:var(--accent);font-style:normal}.brand small{display:block;font:600 .62rem 'Manrope',sans-serif;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+.side nav{display:flex;flex-direction:column;gap:.25rem}
+.nv{display:flex;gap:.7rem;align-items:center;width:100%;text-align:left;background:none;color:var(--ink);padding:.7rem .8rem;border-radius:12px;font-weight:600;text-decoration:none}
+.nv:hover{background:#1c1c1c}.nv.on{background:var(--accent);color:#0A0A0A}
+.who{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:.5rem;padding:.6rem;border-top:1px solid var(--line);font-size:.9rem;color:var(--muted)}
+.content{flex:1;min-width:0;padding:1.5rem 1.25rem 4rem;max-width:980px}
+.cta{display:flex;gap:1rem;align-items:center;width:100%;text-align:left;background:var(--accent);color:#0A0A0A;border-radius:18px;padding:1.2rem 1.3rem;margin:1rem 0}
+.cta .plus{width:46px;height:46px;border-radius:12px;background:#0A0A0A22;display:grid;place-items:center;font-size:1.5rem}
+.cta b{display:block;font-size:1.15rem}.cta small{font-weight:500}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1rem}
+.stats .card{margin:0}.stats small{color:var(--muted);display:block}.stats b{font:500 2rem 'Bodoni Moda',serif}
+.btn{display:inline-block;text-decoration:none;padding:.75rem 1.15rem;border-radius:10px;font-weight:600;background:var(--accent);color:#0A0A0A}
+.btn.ghost{background:var(--soft-bg);color:var(--soft)}
+@media(max-width:800px){
+ .shell{flex-direction:column}
+ .side{position:fixed;bottom:0;left:0;right:0;top:auto;width:100%;height:auto;flex-direction:row;padding:.4rem;border-right:0;border-top:1px solid var(--line);z-index:5}
+ .brand,.who{display:none}
+ .side nav{flex-direction:row;width:100%;justify-content:space-around}
+ .nv{flex-direction:column;gap:.1rem;font-size:.75rem;text-align:center;padding:.45rem .3rem;justify-content:center}
+ .content{padding-bottom:6rem}
+}
 .hidden{display:none!important}
 </style>
 </head>
@@ -68,10 +92,33 @@ input[type=color]{width:40px;height:34px;padding:2px;border:1px solid var(--line
   </form>
 </section>
 
-<div id="adminView" class="hidden">
-  <header><h1>Your products</h1><button class="ghost" id="logoutBtn" type="button">Sign out</button></header>
-
-  <section class="card">
+</main>
+<div id="adminView" class="shell hidden">
+<aside class="side">
+  <div class="brand">JOY<i>.</i><small>Nail Artistry</small></div>
+  <nav>
+    <button class="nv on" type="button" data-view="home">🏠 <span>Home</span></button>
+    <button class="nv" type="button" data-view="products">🛍️ <span>Products</span></button>
+    <button class="nv" type="button" data-view="account">👤 <span>Account</span></button>
+    <a class="nv" href="products.html" target="_blank" rel="noopener">↗ <span>Shop</span></a>
+  </nav>
+  <div class="who"><span>Joy · Owner</span><button class="ghost sm logout" type="button">Sign out</button></div>
+</aside>
+<section class="content">
+  <div id="vHome" class="view">
+    <h1 id="hello">Hello</h1>
+    <p class="hint">Here’s how your shop is doing.</p>
+    <button class="cta" type="button" data-go="add"><span class="plus">＋</span><span><b>Add a product</b><small>Photos, name, price. It only takes a minute.</small></span></button>
+    <div class="stats">
+      <div class="card"><small>Products live</small><b id="sCount">–</b></div>
+      <div class="card"><small>Added this week</small><b id="sWeek">–</b></div>
+      <div class="card"><small>Latest product</small><b id="sLast" style="font-size:1.15rem">–</b></div>
+    </div>
+    <div class="card" style="margin-top:1rem"><h2>Quick links</h2><div class="row"><a class="btn" href="products.html" target="_blank" rel="noopener">View your shop ↗</a><a class="btn ghost" href="index.html" target="_blank" rel="noopener">View your website ↗</a></div></div>
+  </div>
+  <div id="vProducts" class="view hidden">
+    <h1>Products</h1>
+    <section class="card">
     <h2>Add new products</h2>
     <p class="hint">Add your photos, then fill in a name, price and colors for each one. When you’re ready, tap Save.</p>
     <label class="drop" id="drop" for="pick"><b>＋ Add photos</b><span>Tap to choose, or drop photos here. You can add as many as you like.</span></label>
@@ -84,8 +131,22 @@ input[type=color]{width:40px;height:34px;padding:2px;border:1px solid var(--line
     <h2>On your website now</h2>
     <div class="grid" id="list"><p class="hint">Loading…</p></div>
   </section>
+
+  </div>
+  <div id="vAccount" class="view hidden">
+    <h1>Account</h1>
+    <div class="card"><h2>Change password</h2><p class="hint" id="acct"></p>
+      <form id="pwForm">
+        <label class="l" for="np">New password</label><input id="np" type="password" minlength="8" autocomplete="new-password" required>
+        <label class="l" for="np2">Type it again</label><input id="np2" type="password" minlength="8" autocomplete="new-password" required>
+        <p style="margin-top:1rem"><button type="submit">Update password</button></p>
+        <p id="pwMsg" role="status" style="font-weight:600;min-height:1.4em"></p>
+      </form>
+    </div>
+    <div class="card"><button class="ghost logout" type="button">Sign out</button></div>
+  </div>
+</section>
 </div>
-</main>
 <div id="toast" role="status"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
@@ -109,7 +170,8 @@ async function showView(){
     const { data:{ session } } = await sb.auth.getSession();
     $('loginView').classList.toggle('hidden', !!session);
     $('adminView').classList.toggle('hidden', !session);
-    if (session) loadList();
+    document.querySelector('main').classList.toggle('hidden', !!session);
+    if (session) { $('acct').textContent = 'Signed in as ' + session.user.email; loadList(); }
   } catch (e) { console.error(e); fatal('Login check failed: ' + e.message); }
 }
 $('loginForm').addEventListener('submit', async e => {
@@ -124,7 +186,7 @@ $('loginForm').addEventListener('submit', async e => {
   finally { btn.disabled=false; btn.textContent='Sign in'; }
 });
 $('showPw').addEventListener('change', e => { $('password').type = e.target.checked ? 'text' : 'password'; });
-$('logoutBtn').addEventListener('click', async () => { await sb.auth.signOut(); showView(); });
+document.querySelectorAll('.logout').forEach(b => b.addEventListener('click', async () => { await sb.auth.signOut(); showView(); }));
 
 /* ---------- photo helpers ---------- */
 async function shrink(file){
@@ -178,8 +240,33 @@ function drawList(){
 async function loadList(){
   const { data, error } = await sb.from('products').select('*').order('created_at', { ascending:false });
   if (error) { console.error(error); $('list').innerHTML = '<p class="hint">Could not load products: ' + esc(error.message) + '</p>'; return; }
-  products = data; drawList();
+  products = data; drawList(); drawHome();
 }
+
+/* ---------- navigation, home, account ---------- */
+function go(v){
+  document.querySelectorAll('.view').forEach(x => x.classList.toggle('hidden', x.id !== 'v' + v.charAt(0).toUpperCase() + v.slice(1)));
+  document.querySelectorAll('[data-view]').forEach(b => b.classList.toggle('on', b.dataset.view === v));
+  window.scrollTo(0, 0);
+}
+document.addEventListener('click', e => {
+  const n = e.target.closest('[data-view]'); if (n) go(n.dataset.view);
+  if (e.target.closest('[data-go="add"]')) { go('products'); $('pick').click(); }
+});
+function drawHome(){
+  const h = new Date().getHours(); $('hello').textContent = h < 12 ? 'Good morning' : h < 17 ? 'Good afternoon' : 'Good evening';
+  $('sCount').textContent = products.length;
+  const wk = Date.now() - 7*864e5; $('sWeek').textContent = products.filter(p => new Date(p.created_at).getTime() > wk).length;
+  $('sLast').textContent = products[0] ? products[0].title : 'None yet';
+}
+drawHome();
+$('pwForm').addEventListener('submit', async e => {
+  e.preventDefault(); const m = $('pwMsg'); m.style.color = 'var(--bad)';
+  if ($('np').value !== $('np2').value) { m.textContent = 'The two passwords don’t match.'; return; }
+  const { error } = await sb.auth.updateUser({ password: $('np').value });
+  if (error) { m.textContent = 'Could not update: ' + error.message; return; }
+  m.style.color = 'var(--ok)'; m.textContent = 'Password updated.'; e.target.reset();
+});
 
 /* ---------- adding photos ---------- */
 function addFiles(files){
