@@ -6,29 +6,31 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Joy Nail Artistry – Manage products</title>
 <style>
-  :root{--bg:#fbf4f3;--card:#fff;--ink:#3a2231;--muted:#8a7280;--accent:#a3335f;--accent-2:#f3d9e3;--line:#ecd9df;--ok:#2f7a55;--bad:#b3261e}
+  :root{--bg:#0A0A0A;--card:#131313;--ink:#F4F1F3;--muted:#B3AEB1;--accent:#FF35B9;--soft:#FFA3DF;--accent-2:#2A1722;--line:#2A2A2A;--ok:#2f9d6b;--bad:#FF6B8A;color-scheme:dark}
+  @font-face{font-family:"Manrope";src:url(fonts/manrope-latin-wght-normal.woff2) format("woff2");font-weight:200 800;font-display:swap}
+  @font-face{font-family:"Bodoni Moda";src:url(fonts/bodoni-moda-latin-standard-normal.woff2) format("woff2");font-weight:400 900;font-display:swap}
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Georgia,'Times New Roman',serif}
-  h1,h2{font-weight:600;margin:0 0 .5rem}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 'Manrope',system-ui,sans-serif}
+  h1,h2{font-family:'Bodoni Moda',Georgia,serif;font-weight:500;margin:0 0 .5rem}
   h1{font-size:1.7rem} h2{font-size:1.25rem}
   main{max-width:720px;margin:0 auto;padding:1.25rem 1rem 4rem}
   header{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1.25rem}
   .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.25rem;margin-bottom:1.25rem}
   label{display:block;font:600 .95rem system-ui,sans-serif;margin:1rem 0 .35rem}
-  input[type=text],input[type=email],input[type=password],input[type=number],textarea{width:100%;padding:.8rem;border:1px solid var(--line);border-radius:10px;font:1rem system-ui,sans-serif;background:#fff;color:var(--ink)}
+  input[type=text],input[type=email],input[type=password],input[type=number],textarea{width:100%;padding:.8rem;border:1px solid var(--line);border-radius:10px;font:1rem system-ui,sans-serif;background:#1B1B1B;color:var(--ink)}
   textarea{min-height:110px;resize:vertical}
   :focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-  button{font:600 1rem system-ui,sans-serif;border:0;border-radius:10px;padding:.8rem 1.2rem;cursor:pointer;background:var(--accent);color:#fff}
-  button.ghost{background:var(--accent-2);color:var(--accent)}
-  button.danger{background:#fbe3e1;color:var(--bad)}
+  button{font:600 1rem system-ui,sans-serif;border:0;border-radius:10px;padding:.8rem 1.2rem;cursor:pointer;background:var(--accent);color:#0A0A0A}
+  button.ghost{background:var(--accent-2);color:var(--soft)}
+  button.danger{background:#2b1218;color:var(--bad)}
   button:disabled{opacity:.6;cursor:wait}
   .row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
   .hint{color:var(--muted);font:.9rem system-ui,sans-serif;margin:.25rem 0 0}
   .swatches{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.5rem}
   .sw{position:relative;width:44px;height:44px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--line)}
-  .sw button{position:absolute;top:-6px;right:-6px;width:22px;height:22px;padding:0;border-radius:50%;background:var(--ink);font-size:.8rem;line-height:1}
-  input[type=color]{width:52px;height:44px;padding:2px;border:1px solid var(--line);border-radius:10px;background:#fff}
-  #preview{max-width:180px;border-radius:10px;margin-top:.6rem;display:none}
+  .sw button{position:absolute;top:-6px;right:-6px;width:22px;height:22px;padding:0;border-radius:50%;background:var(--ink);color:var(--bg);font-size:.8rem;line-height:1}
+  input[type=color]{width:52px;height:44px;padding:2px;border:1px solid var(--line);border-radius:10px;background:#1B1B1B}
+  .pv{position:relative;display:inline-block;margin-top:.6rem}#preview{max-width:200px;border-radius:12px;display:block}#rmPhoto{position:absolute;top:-10px;right:-10px;width:32px;height:32px;padding:0;border-radius:50%;background:var(--ink);color:var(--bg);font-size:1.2rem;line-height:1}
   .item{display:flex;gap:.9rem;align-items:center;padding:.8rem 0;border-top:1px solid var(--line)}
   .item:first-child{border-top:0}
   .item img{width:64px;height:64px;object-fit:cover;border-radius:10px;background:var(--accent-2)}
@@ -43,9 +45,10 @@
 </head>
 <body>
 <main>
+  <p id="fatal" class="card hidden" style="color:var(--bad);font:600 1rem system-ui,sans-serif"></p>
 
   <!-- LOGIN -->
-  <section id="loginView" class="card hidden">
+  <section id="loginView" class="card">
     <h1>Joy’s product manager</h1>
     <p class="hint">Sign in to add or change what shows on your website.</p>
     <form id="loginForm">
@@ -86,8 +89,8 @@
 
         <label for="image">Photo</label>
         <input id="image" type="file" accept="image/*">
-        <img id="preview" alt="Photo preview">
-        <p class="hint">Use a clear, bright photo. It uploads when you save.</p>
+        <div id="pv" class="pv hidden"><img id="preview" alt="Photo preview"><button type="button" id="rmPhoto" aria-label="Remove this photo">×</button></div>
+        <p class="hint">Use a clear, bright photo. It uploads when you save. Tap the × on the photo to remove it or pick a different one.</p>
 
         <div class="row" style="margin-top:1.4rem">
           <button type="submit" id="saveBtn">Save product</button>
@@ -111,7 +114,10 @@ const SUPABASE_URL = 'https://wskkrtcpufceolkvcovt.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_MLVLmaj2U_ta_9-lIRNQSg_vLMzesUp';
 /* ================================================== */
 
-const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+function fatal(msg){ const f=document.getElementById('fatal'); f.textContent=msg; f.classList.remove('hidden'); }
+if (typeof supabase === 'undefined') { fatal('Could not load the login system. Check your internet and refresh the page.'); }
+let sb;
+try { sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); } catch (e) { console.error(e); fatal('Setup problem: ' + e.message); }
 const $ = id => document.getElementById(id);
 let colors = [], editing = null, currentImage = null;
 
@@ -123,15 +129,17 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt
 
 /* ---------- auth ---------- */
 async function showView(){
-  const { data:{ session } } = await sb.auth.getSession();
-  $('loginView').classList.toggle('hidden', !!session);
-  $('adminView').classList.toggle('hidden', !session);
-  if (session) loadList();
+  try {
+    const { data:{ session } } = await sb.auth.getSession();
+    $('loginView').classList.toggle('hidden', !!session);
+    $('adminView').classList.toggle('hidden', !session);
+    if (session) loadList();
+  } catch (e) { console.error(e); fatal('Login check failed: ' + e.message); }
 }
 $('loginForm').addEventListener('submit', async e => {
   e.preventDefault();
   const { error } = await sb.auth.signInWithPassword({ email:$('email').value.trim(), password:$('password').value });
-  if (error) return toast('Wrong email or password. Try again.', true);
+  if (error) { console.error(error); return toast('Login failed: ' + error.message, true); }
   showView();
 });
 $('logoutBtn').addEventListener('click', async () => { await sb.auth.signOut(); showView(); });
@@ -152,16 +160,22 @@ $('swatches').addEventListener('click', e => {
 });
 
 /* ---------- image preview ---------- */
+let origImage = null;
+function showPv(src){ $('preview').src = src; $('pv').classList.remove('hidden'); }
+function hidePv(){ $('pv').classList.add('hidden'); $('preview').removeAttribute('src'); }
 $('image').addEventListener('change', e => {
-  const f = e.target.files[0], p = $('preview');
-  if (!f) { p.style.display = currentImage ? 'block' : 'none'; return; }
-  p.src = URL.createObjectURL(f); p.style.display = 'block';
+  const f = e.target.files[0];
+  if (f) showPv(URL.createObjectURL(f)); else if (currentImage) showPv(currentImage); else hidePv();
 });
+$('rmPhoto').addEventListener('click', () => { $('image').value = ''; currentImage = null; hidePv(); });
+async function removeStored(url){
+  try { const path = (url || '').split('/product-images/')[1]; if (path) await sb.storage.from('product-images').remove([decodeURIComponent(path)]); } catch (e) { console.error(e); }
+}
 
 /* ---------- save ---------- */
 function resetForm(){
   $('productForm').reset(); colors = []; editing = null; currentImage = null;
-  drawSwatches(); $('preview').style.display = 'none';
+  drawSwatches(); hidePv(); origImage = null;
   $('formTitle').textContent = 'Add a product'; $('cancelEdit').classList.add('hidden');
 }
 $('cancelEdit').addEventListener('click', resetForm);
@@ -188,6 +202,7 @@ $('productForm').addEventListener('submit', async e => {
     const q = editing ? sb.from('products').update(row).eq('id', editing) : sb.from('products').insert(row);
     const { error } = await q;
     if (error) throw error;
+    if (origImage && origImage !== image_url) await removeStored(origImage);
     toast(editing ? 'Product updated.' : 'Product added. It’s live on your site.');
     resetForm(); loadList();
   } catch (err) {
@@ -199,7 +214,7 @@ $('productForm').addEventListener('submit', async e => {
 let all = [];
 async function loadList(){
   const { data, error } = await sb.from('products').select('*').order('created_at', { ascending:false });
-  if (error) { $('list').innerHTML = '<p class="hint">Could not load products. Refresh the page.</p>'; return; }
+  if (error) { console.error(error); $('list').innerHTML = '<p class="hint">Could not load products: ' + esc(error.message) + '</p>'; return; }
   all = data;
   $('list').innerHTML = data.length ? data.map(p => `
     <div class="item">
@@ -222,7 +237,7 @@ $('list').addEventListener('click', async e => {
     editing = p.id; currentImage = p.image_url; colors = [...(p.colors||[])];
     $('title').value = p.title; $('description').value = p.description || ''; $('price').value = p.price ?? '';
     drawSwatches();
-    if (p.image_url) { $('preview').src = p.image_url; $('preview').style.display = 'block'; }
+    origImage = p.image_url; if (p.image_url) showPv(p.image_url);
     $('formTitle').textContent = 'Edit product'; $('cancelEdit').classList.remove('hidden');
     window.scrollTo({ top:0, behavior:'smooth' });
   }
@@ -230,12 +245,12 @@ $('list').addEventListener('click', async e => {
     if (!confirm('Delete this product from your site?')) return;
     const { error } = await sb.from('products').delete().eq('id', del.dataset.del);
     if (error) return toast('Could not delete. Try again.', true);
+    const gone = all.find(x => x.id === del.dataset.del); if (gone && gone.image_url) await removeStored(gone.image_url);
     toast('Product deleted.'); loadList();
   }
 });
 
-sb.auth.onAuthStateChange(() => showView());
-showView();
+if (sb) { sb.auth.onAuthStateChange(() => showView()); showView(); }
 </script>
 </body>
 </html>
