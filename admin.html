@@ -71,6 +71,56 @@ input[type=color]{width:40px;height:34px;padding:2px;border:1px solid var(--line
  .nv{flex-direction:column;gap:.1rem;font-size:.75rem;text-align:center;padding:.45rem .3rem;justify-content:center}
  .content{padding-bottom:6rem}
 }
+
+.bdg{background:#fff;color:#0A0A0A;border-radius:99px;font:700 .72rem 'Manrope',sans-serif;padding:.05rem .45rem;margin-left:auto;font-style:normal}
+.nv.on .bdg{background:#0A0A0A;color:#fff}
+.tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin:.6rem 0 1rem}
+.tab{background:#1b1b1b;color:var(--ink);padding:.5rem .9rem;border-radius:99px;font-size:.92rem}
+.tab.on{background:var(--accent);color:#0A0A0A}.tab em{font-style:normal;background:#0A0A0A33;border-radius:99px;padding:0 .4rem;margin-left:.2rem}
+.chip{display:inline-block;border-radius:99px;padding:.15rem .65rem;font-size:.78rem;font-weight:700;white-space:nowrap;background:#222;color:#ccc}
+.s-verify{background:#3a2a05;color:#ffcc66}.s-pend{background:#3a1a2c;color:var(--soft)}.s-ok{background:#0e2f22;color:#6fe0ae}.s-done{background:#1d2540;color:#9db4ff}.s-bad{background:#2b1218;color:var(--bad)}
+.bk{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:.7rem;overflow:hidden}
+.bk.open{border-color:#5a2a46}
+.bk-h{display:flex;gap:.9rem;align-items:center;padding:.9rem 1rem;cursor:pointer}
+.bk-when{min-width:86px}.bk-when b{display:block}.bk-when span{color:var(--soft);font-size:.9rem}
+.bk-who{flex:1;min-width:0}.bk-who b{display:block}.bk-who small{display:block;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bk-d{padding:0 1rem 1rem;border-top:1px solid var(--line)}
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.8rem 1rem;margin:1rem 0}
+.info small,.ev small{display:block;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em}
+.info a{color:var(--soft)}.info span{overflow-wrap:anywhere}
+.files{margin:.2rem 0 1rem;display:flex;gap:.5rem;flex-wrap:wrap;align-items:flex-start}.fileview{width:100%}.fileview img{max-width:100%;max-height:420px;border-radius:12px;margin-top:.5rem;border:1px solid var(--line)}
+.acts{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+.panel{background:#181818;border:1px solid var(--line);border-radius:14px;padding:1rem;margin-top:1rem;display:flex;flex-direction:column;gap:.7rem}
+.panel input,.panel select,.row input[type=date],select{padding:.7rem;border:1px solid var(--line);border-radius:10px;font:inherit;background:#1B1B1B;color:var(--ink);color-scheme:dark}
+.panel input[type=text]{width:100%}
+.ev{margin-top:1rem}.ev p{margin:.4rem 0;font-size:.92rem}.ev p span{color:var(--muted)}
+.mini{display:flex;gap:.8rem;align-items:center;padding:.7rem 0;border-top:1px solid var(--line);cursor:pointer}.mini:first-of-type{border-top:0}.mini span{flex:1;color:var(--muted);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.stats .card[data-view]{cursor:pointer}
+.calbar{display:flex;align-items:center;gap:.5rem;margin-bottom:.8rem}.calbar h2{flex:1;margin:0}
+#calGrid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:.35rem}
+.dw{font-style:normal;text-align:center;color:var(--muted);font-size:.78rem;padding:.2rem 0}
+.cd2{position:relative;aspect-ratio:1/1;min-height:48px;min-width:0;overflow:hidden;background:#181818;color:var(--ink);border-radius:12px;padding:.3rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.1rem}
+.cd2 b{font-size:1rem}.cd2 em{font-style:normal;background:var(--accent);color:#0A0A0A;border-radius:99px;font-size:.7rem;font-weight:700;padding:0 .4rem}.cd2 small{font-size:.62rem;color:var(--muted)}
+.cd2.off{opacity:.5}.cd2.tod{box-shadow:inset 0 0 0 2px var(--soft)}.cd2.sel{background:var(--soft-bg);outline:2px solid var(--accent)}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.6rem}
+.sl{display:flex;flex-direction:column;align-items:flex-start;gap:.1rem;padding:.7rem;border-radius:12px;text-align:left;background:#181818;color:var(--ink);border:1px solid var(--line);font-weight:500}
+.sl span{color:var(--muted);font-size:.85rem}.sl small{color:var(--soft)}
+.sl.taken{background:#0e2f22;border-color:#1c5a41}.sl.taken span{color:#bdf2d8}
+.sl.blocked{background:#2b1218;border-color:#5a2230}.sl.blocked span{color:var(--bad)}
+.sl.past{opacity:.4}
+.notice{background:var(--soft-bg);border:1px solid #5a2a46;color:var(--soft);padding:.8rem 1rem;border-radius:12px;margin:.6rem 0}
+.cl2{display:flex;gap:.9rem;align-items:center;padding:.8rem 0;border-top:1px solid var(--line)}.cl2 small{display:block;color:var(--muted)}.grow{flex:1;min-width:0}
+.av{width:42px;height:42px;border-radius:50%;background:var(--soft-bg);color:var(--soft);display:grid;place-items:center;font:600 1.1rem 'Bodoni Moda',serif;flex:none}
+.bar{display:flex;gap:.7rem;align-items:center;margin:.55rem 0}.bar span{width:130px;flex:none;font-size:.92rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.bar div{flex:1;background:#222;border-radius:99px;height:12px;overflow:hidden}.bar i{display:block;height:100%;background:var(--accent);border-radius:99px}.bar b{width:2.2rem;text-align:right}
+.msg.unread{border-color:#5a2a46}.msg p{white-space:pre-wrap;overflow-wrap:anywhere}
+input[type=search]{width:100%;padding:.75rem;border:1px solid var(--line);border-radius:10px;font:inherit;background:#1B1B1B;color:var(--ink)}
+@media(max-width:800px){
+ .side nav{overflow-x:auto;justify-content:flex-start;scrollbar-width:none}
+ .nv{flex:none;width:auto;min-width:66px;position:relative}
+ .bdg{position:absolute;top:2px;right:6px;margin:0}
+ .bk-h{flex-wrap:wrap}.bk-when{min-width:0}
+ .bar span{width:90px}
+}
 .hidden{display:none!important}
 </style>
 </head>
@@ -98,6 +148,11 @@ input[type=color]{width:40px;height:34px;padding:2px;border:1px solid var(--line
   <div class="brand">JOY<i>.</i><small>Nail Artistry</small></div>
   <nav>
     <button class="nv on" type="button" data-view="home">🏠 <span>Home</span></button>
+    <button class="nv" type="button" data-view="bookings">📅 <span>Bookings</span><em class="bdg hidden" id="bdgBookings"></em></button>
+    <button class="nv" type="button" data-view="calendar">🗓️ <span>Calendar</span></button>
+    <button class="nv" type="button" data-view="clients">👥 <span>Clients</span></button>
+    <button class="nv" type="button" data-view="reports">📊 <span>Reports</span></button>
+    <button class="nv" type="button" data-view="messages">💌 <span>Messages</span><em class="bdg hidden" id="bdgMessages"></em></button>
     <button class="nv" type="button" data-view="products">🛍️ <span>Products</span></button>
     <button class="nv" type="button" data-view="account">👤 <span>Account</span></button>
     <a class="nv" href="products.html" target="_blank" rel="noopener">↗ <span>Shop</span></a>
@@ -107,7 +162,14 @@ input[type=color]{width:40px;height:34px;padding:2px;border:1px solid var(--line
 <section class="content">
   <div id="vHome" class="view">
     <h1 id="hello">Hello</h1>
-    <p class="hint">Here’s how your shop is doing.</p>
+    <p class="hint">Here’s how your business is doing.</p>
+    <div class="stats">
+      <div class="card" data-view="bookings"><small>Payments to check</small><b id="hVerify">–</b></div>
+      <div class="card" data-view="calendar"><small>Today</small><b id="hToday">–</b></div>
+      <div class="card" data-view="bookings"><small>Upcoming</small><b id="hUpcoming">–</b></div>
+      <div class="card" data-view="messages"><small>New messages</small><b id="hMsgs">–</b></div>
+    </div>
+    <div class="card" style="margin-top:1rem"><h2>Today’s appointments</h2><div id="hTodayList"><p class="hint">Loading…</p></div></div>
     <button class="cta" type="button" data-go="add"><span class="plus">＋</span><span><b>Add a product</b><small>Photos, name, price. It only takes a minute.</small></span></button>
     <div class="stats">
       <div class="card"><small>Products live</small><b id="sCount">–</b></div>
@@ -115,6 +177,38 @@ input[type=color]{width:40px;height:34px;padding:2px;border:1px solid var(--line
       <div class="card"><small>Latest product</small><b id="sLast" style="font-size:1.15rem">–</b></div>
     </div>
     <div class="card" style="margin-top:1rem"><h2>Quick links</h2><div class="row"><a class="btn" href="products.html" target="_blank" rel="noopener">View your shop ↗</a><a class="btn ghost" href="index.html" target="_blank" rel="noopener">View your website ↗</a></div></div>
+  </div>
+  <div id="vBookings" class="view hidden">
+    <h1>Bookings</h1>
+    <p class="hint">Every booking from your website shows up here. Tap one to see details and confirm it.</p>
+    <input type="search" id="bkSearch" placeholder="Search by name, phone, email or booking code">
+    <div class="tabs" id="bkTabs"></div>
+    <div id="bkList"><p class="hint">Loading…</p></div>
+  </div>
+  <div id="vCalendar" class="view hidden">
+    <h1>Calendar &amp; days off</h1>
+    <p class="hint">See your month, take a day off, or block a single time. Customers will not be able to book blocked times.</p>
+    <section class="card">
+      <div class="calbar"><button type="button" class="ghost sm" id="calPrev" aria-label="Previous month">‹</button><h2 id="calTitle"></h2><button type="button" class="ghost sm" id="calToday">Today</button><button type="button" class="ghost sm" id="calNext" aria-label="Next month">›</button></div>
+      <div id="calGrid"></div>
+    </section>
+    <section class="card" id="dayBox"></section>
+  </div>
+  <div id="vClients" class="view hidden">
+    <h1>Clients</h1>
+    <p class="hint" id="clCount">&nbsp;</p>
+    <input type="search" id="clSearch" placeholder="Search clients">
+    <section class="card" style="margin-top:1rem"><div id="clList"><p class="hint">Loading…</p></div></section>
+  </div>
+  <div id="vReports" class="view hidden">
+    <h1>Reports</h1>
+    <p class="hint">A quick look at how your business is doing.</p>
+    <div id="repBox"><p class="hint">Loading…</p></div>
+  </div>
+  <div id="vMessages" class="view hidden">
+    <h1>Messages</h1>
+    <p class="hint">Messages people send from the contact form on your website.</p>
+    <div id="msgList"><p class="hint">Loading…</p></div>
   </div>
   <div id="vProducts" class="view hidden">
     <h1>Products</h1>
@@ -342,6 +436,302 @@ document.addEventListener('click', async e => {
 $('saveAll').addEventListener('click', saveAll);
 
 if (sb) { sb.auth.onAuthStateChange(() => { setTimeout(showView, 0); }); showView(); }
+
+/* =====================================================================
+   BOOKINGS MODULE: bookings, calendar & days off, clients, reports, messages
+   ===================================================================== */
+const TZ = 'Africa/Lagos';
+const ACTIVE = ['PENDING PAYMENT','PAYMENT VERIFICATION','CONFIRMED','RESCHEDULED'];
+const STAT = { 'PAYMENT VERIFICATION':['Check payment','s-verify'], 'PENDING PAYMENT':['Needs new proof','s-pend'], 'CONFIRMED':['Confirmed','s-ok'], 'RESCHEDULED':['Rescheduled','s-ok'], 'COMPLETED':['Done','s-done'], 'CANCELLED':['Cancelled','s-bad'] };
+let bks = [], blockedD = [], blockedS = [], msgs = [], cfg = { open_days:[1,2,3,4,5,6], open_time:'10:00', close_time:'19:00', slot_minutes:60 };
+let bkFilter = 'verify', bkSearch = '', bkOpen = null, bkPanel = null, bkEv = {}, calMonth = null, calSel = null, repRange = 'month', clSearch = '', bkLoaded = false, bkTimer = null;
+
+const money = n => '₦' + Number(n || 0).toLocaleString();
+const todayStr = () => new Intl.DateTimeFormat('en-CA', { timeZone: TZ }).format(new Date());
+const nowMin = () => { const p = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: TZ, hour:'2-digit', minute:'2-digit', hourCycle:'h23' }).formatToParts(new Date()).map(x => [x.type, x.value])); return +p.hour * 60 + +p.minute; };
+const toMin = t => { const [h, m] = t.split(':').map(Number); return h * 60 + m; };
+const fromMin = m => String(Math.floor(m / 60)).padStart(2,'0') + ':' + String(m % 60).padStart(2,'0');
+const lbl = t => { const [h, m] = t.split(':').map(Number); return (h % 12 === 0 ? 12 : h % 12) + ':' + String(m).padStart(2,'0') + ' ' + (h >= 12 ? 'PM' : 'AM'); };
+const dShort = s => new Date(s + 'T12:00:00Z').toLocaleDateString('en-GB', { weekday:'short', day:'numeric', month:'short', timeZone:'UTC' });
+const dLong = s => new Date(s + 'T12:00:00Z').toLocaleDateString('en-GB', { weekday:'long', day:'numeric', month:'long', year:'numeric', timeZone:'UTC' });
+const dowOf = s => new Date(s + 'T12:00:00Z').getUTCDay();
+const addDays = (s, n) => new Date(new Date(s + 'T12:00:00Z').getTime() + n * 864e5).toISOString().slice(0,10);
+const slotList = () => { const o = []; for (let t = toMin(cfg.open_time); t + cfg.slot_minutes <= toMin(cfg.close_time); t += cfg.slot_minutes) o.push(fromMin(t)); return o; };
+const digits = p => String(p || '').replace(/\D/g, '');
+const waNum = p => { let d = digits(p); if (d.startsWith('0')) d = '234' + d.slice(1); return d; };
+const waLink = (p, text) => 'https://wa.me/' + waNum(p) + (text ? '?text=' + encodeURIComponent(text) : '');
+const svcNames = b => (b.services || []).map(s => s.name).join(' + ');
+const chip = st => { const c = STAT[st] || [st, '']; return '<span class="chip ' + c[1] + '">' + esc(c[0]) + '</span>'; };
+const firstName = n => String(n || '').trim().split(/\s+/)[0] || 'there';
+
+async function loadBk(quiet) {
+  const [a, b, c, d, e] = await Promise.all([
+    sb.from('bookings').select('*').order('date').order('time'),
+    sb.from('blocked_dates').select('*'),
+    sb.from('blocked_slots').select('*'),
+    sb.from('messages').select('*').order('created_at', { ascending:false }),
+    sb.from('settings').select('*').eq('id', 1).maybeSingle(),
+  ]);
+  const bad = a.error || b.error || c.error || d.error;
+  if (bad) {
+    console.error(bad);
+    const m = /does not exist|schema cache/i.test(bad.message) ? 'The bookings database is not set up yet. Run bookings-setup.sql in Supabase first.' : 'Could not load bookings: ' + bad.message;
+    ['bkList','calBox','clList','repBox','msgList'].forEach(id => { const x = $(id); if (x) x.innerHTML = '<p class="hint">' + esc(m) + '</p>'; });
+    return;
+  }
+  bks = a.data; blockedD = b.data; blockedS = c.data; msgs = d.data;
+  if (e.data) cfg = e.data;
+  bkLoaded = true;
+  const ae = document.activeElement;
+  if (quiet && (bkPanel || (ae && ae.matches && ae.matches('input,select,textarea')))) { drawBadges(); drawBkHome(); return; }
+  drawAllBk();
+}
+function drawAllBk() { drawBadges(); drawBkHome(); drawBookings(); drawCalendar(); drawClients(); drawReports(); drawMessages(); }
+
+function drawBadges() {
+  const need = bks.filter(b => b.status === 'PAYMENT VERIFICATION').length, unread = msgs.filter(m => !m.read).length;
+  const set = (id, n) => { const x = $(id); if (x) { x.textContent = n; x.classList.toggle('hidden', !n); } };
+  set('bdgBookings', need); set('bdgMessages', unread);
+}
+
+/* ---------- HOME ---------- */
+function drawBkHome() {
+  const t = todayStr(), act = bks.filter(b => ACTIVE.includes(b.status));
+  $('hVerify').textContent = bks.filter(b => b.status === 'PAYMENT VERIFICATION').length;
+  $('hToday').textContent = act.filter(b => b.date === t).length;
+  $('hUpcoming').textContent = act.filter(b => b.date >= t).length;
+  $('hMsgs').textContent = msgs.filter(m => !m.read).length;
+  const todays = act.filter(b => b.date === t).sort((x, y) => x.time.localeCompare(y.time));
+  $('hTodayList').innerHTML = todays.length ? todays.map(b => '<div class="mini" data-act="bk-open" data-id="' + b.id + '"><b>' + lbl(b.time) + '</b><span>' + esc(b.name) + ' · ' + esc(svcNames(b)) + '</span>' + chip(b.status) + '</div>').join('') : '<p class="hint">Nothing booked for today.</p>';
+}
+
+/* ---------- BOOKINGS ---------- */
+function filteredBks() {
+  const t = todayStr(), s = bkSearch.trim().toLowerCase();
+  let rows = bks.filter(b => {
+    if (bkFilter === 'verify') return ['PAYMENT VERIFICATION','PENDING PAYMENT'].includes(b.status);
+    if (bkFilter === 'upcoming') return b.date >= t && ['CONFIRMED','RESCHEDULED'].includes(b.status);
+    if (bkFilter === 'past') return b.status === 'COMPLETED' || (b.date < t && b.status !== 'CANCELLED');
+    if (bkFilter === 'cancelled') return b.status === 'CANCELLED';
+    return true;
+  });
+  if (s) rows = rows.filter(b => [b.name, b.phone, b.email, b.ref].some(v => String(v).toLowerCase().includes(s)));
+  rows.sort((x, y) => (x.date + x.time).localeCompare(y.date + y.time) * (['past','cancelled','all'].includes(bkFilter) ? -1 : 1));
+  return rows;
+}
+function drawBookings() {
+  const cnt = f => { const s = bkFilter; bkFilter = f; const n = filteredBksNoSearch().length; bkFilter = s; return n; };
+  const tabs = [['verify','Check payment'],['upcoming','Upcoming'],['past','Past'],['cancelled','Cancelled'],['all','All']];
+  $('bkTabs').innerHTML = tabs.map(([k, n]) => '<button type="button" class="tab' + (bkFilter === k ? ' on' : '') + '" data-act="bk-tab" data-k="' + k + '">' + n + (k === 'verify' ? ' <em>' + cnt('verify') + '</em>' : '') + '</button>').join('');
+  const rows = filteredBks();
+  $('bkList').innerHTML = rows.length ? rows.map(bkCard).join('') : '<p class="hint" style="padding:1rem 0">' + (bkFilter === 'verify' ? 'No payments waiting. You’re all caught up 🎉' : 'No bookings here.') + '</p>';
+}
+function filteredBksNoSearch() { const s = bkSearch; bkSearch = ''; const r = filteredBks(); bkSearch = s; return r; }
+
+function bkCard(b) {
+  const open = bkOpen === b.id;
+  return '<article class="bk' + (open ? ' open' : '') + '"><div class="bk-h" data-act="bk-toggle" data-id="' + b.id + '" role="button" tabindex="0">' +
+    '<div class="bk-when"><b>' + esc(dShort(b.date)) + '</b><span>' + lbl(b.time) + '</span></div>' +
+    '<div class="bk-who"><b>' + esc(b.name) + '</b><small>' + esc(svcNames(b)) + '</small></div>' + chip(b.status) + '</div>' + (open ? bkDetail(b) : '') + '</article>';
+}
+function bkDetail(b) {
+  const ev = bkEv[b.id];
+  const info = (k, v) => v ? '<div><small>' + k + '</small><span>' + v + '</span></div>' : '';
+  const wa = waLink(b.phone, waText(b));
+  let h = '<div class="bk-d"><div class="info">' +
+    info('Phone', '<a href="tel:' + esc(b.phone) + '">' + esc(b.phone) + '</a>') + info('Email', '<a href="mailto:' + esc(b.email) + '">' + esc(b.email) + '</a>') +
+    info('Date', esc(dLong(b.date)) + ' · ' + lbl(b.time)) + info('Where', b.address ? 'Home service: ' + esc(b.address) : 'At the studio') +
+    info('Total', money(b.subtotal)) + info('Deposit', money(b.deposit) + (b.payment_verified_at ? ' ✅ verified' : ' (not verified yet)')) + info('Balance to pay', money(b.balance)) +
+    info('Paid from', esc(b.payer_name || '') + (b.payment_ref ? ' · ref ' + esc(b.payment_ref) : '')) + info('Notes', esc(b.notes || '')) + info('Booking code', esc(b.ref)) +
+    info('Cancel reason', esc(b.cancel_reason || '')) + '</div>';
+  h += '<div class="files">' + (b.proof_path ? '<button type="button" class="ghost sm" data-act="bk-file" data-id="' + b.id + '" data-k="proof">View payment proof</button>' : '') +
+    (b.inspiration_path ? '<button type="button" class="ghost sm" data-act="bk-file" data-id="' + b.id + '" data-k="insp">View inspiration photo</button>' : '') + '<div class="fileview" id="fv' + b.id + '"></div></div>';
+  h += '<div class="acts">';
+  if (['PAYMENT VERIFICATION','PENDING PAYMENT','RESCHEDULED'].includes(b.status)) h += '<button type="button" data-act="bk-do" data-a="confirm-payment" data-id="' + b.id + '">✓ Payment received, confirm</button>';
+  if (b.status === 'PAYMENT VERIFICATION') h += '<button type="button" class="ghost" data-act="bk-panel" data-p="reject-proof" data-id="' + b.id + '">Payment proof is wrong</button>';
+  if (['CONFIRMED','RESCHEDULED'].includes(b.status)) h += '<button type="button" data-act="bk-do" data-a="complete" data-id="' + b.id + '">✓ Mark as done</button>';
+  if (ACTIVE.includes(b.status)) h += '<button type="button" class="ghost" data-act="bk-panel" data-p="reschedule" data-id="' + b.id + '">Change time</button><button type="button" class="danger" data-act="bk-panel" data-p="cancel" data-id="' + b.id + '">Cancel</button>';
+  if (b.status === 'CANCELLED') h += '<button type="button" class="danger sm" data-act="bk-del" data-id="' + b.id + '">Delete for good</button>';
+  h += '<a class="btn ghost" href="' + wa + '" target="_blank" rel="noopener">💬 WhatsApp ' + esc(firstName(b.name)) + '</a></div>';
+  if (bkPanel && bkPanel.id === b.id) h += panelHtml(b);
+  h += '<div class="ev"><small>History</small>' + (ev ? (ev.length ? ev.map(e => '<p><b>' + esc(e.action) + '</b> · ' + esc(new Date(e.at).toLocaleString('en-GB', { timeZone:TZ, day:'numeric', month:'short', hour:'numeric', minute:'2-digit' })) + (e.detail ? '<br><span>' + esc(e.detail) + '</span>' : '') + '</p>').join('') : '<p>No history yet.</p>') : '<p>Loading…</p>') + '</div></div>';
+  return h;
+}
+function waText(b) {
+  const n = firstName(b.name), when = dLong(b.date) + ' at ' + lbl(b.time);
+  if (b.status === 'CONFIRMED' || b.status === 'RESCHEDULED') return 'Hi ' + n + '! Your appointment with Joy Nail Artistry is confirmed for ' + when + ' ✅ Balance on the day: ' + money(b.balance) + '. See you then 💅';
+  if (b.status === 'PENDING PAYMENT') return 'Hi ' + n + ', Joy here. I could not verify your payment proof for booking ' + b.ref + '. Please send a clearer screenshot or upload it again from your booking page 🙏';
+  if (b.status === 'CANCELLED') return 'Hi ' + n + ', Joy here. Your booking ' + b.ref + ' has been cancelled' + (b.cancel_reason ? ' (' + b.cancel_reason + ')' : '') + '. You can rebook anytime 💗';
+  if (b.status === 'COMPLETED') return 'Hi ' + n + '! Thank you for coming today 💗 I hope you love your nails!';
+  return 'Hi ' + n + ', Joy here about your booking ' + b.ref + ' for ' + when + '.';
+}
+function panelHtml(b) {
+  const p = bkPanel;
+  if (p.kind === 'reschedule') {
+    const slots = freeSlots(p.date, b.id);
+    return '<div class="panel"><b>Move to a new time</b><div class="row"><input type="date" id="rsDate" min="' + todayStr() + '" value="' + esc(p.date || '') + '"><select id="rsTime">' +
+      (p.date ? (slots.length ? slots.map(t => '<option value="' + t + '">' + lbl(t) + '</option>').join('') : '<option value="">No free times that day</option>') : '<option value="">Pick a date first</option>') + '</select></div>' +
+      '<input type="text" id="rsWhy" placeholder="Reason (optional)"><div class="row"><button type="button" data-act="bk-go-resched" data-id="' + b.id + '">Move booking</button><button type="button" class="ghost" data-act="bk-panel-x">Never mind</button></div></div>';
+  }
+  const t = { cancel:['Cancel this booking?', 'Cancel booking', 'Reason (the customer will see it)'], 'reject-proof':['Ask for a new payment proof', 'Send back', 'What is wrong with it? (optional)'] }[p.kind];
+  return '<div class="panel"><b>' + t[0] + '</b><input type="text" id="pnWhy" placeholder="' + t[2] + '"><div class="row"><button type="button" class="' + (p.kind === 'cancel' ? 'danger' : '') + '" data-act="bk-go-panel" data-id="' + b.id + '">' + t[1] + '</button><button type="button" class="ghost" data-act="bk-panel-x">Never mind</button></div></div>';
+}
+function freeSlots(date, exceptId) {
+  if (!date) return [];
+  const taken = new Set(bks.filter(x => x.date === date && ACTIVE.includes(x.status) && x.id !== exceptId).map(x => x.time));
+  const blk = new Set(blockedS.filter(x => x.date === date).map(x => x.time));
+  const cut = date === todayStr() ? nowMin() : -1;
+  return slotList().filter(t => !taken.has(t) && !blk.has(t) && toMin(t) > cut);
+}
+async function bkAction(id, action, reason, date, time) {
+  const { error } = await sb.rpc('admin_booking_action', { p_id:id, p_action:action, p_reason:reason || null, p_date:date || null, p_time:time || null });
+  if (error) { toast(error.message, true); return false; }
+  bkPanel = null; delete bkEv[id];
+  await loadBk(); loadEvents(id);
+  toast('Done ✓'); return true;
+}
+async function loadEvents(id) {
+  const { data } = await sb.from('booking_events').select('*').eq('booking_id', id).order('at', { ascending:false });
+  bkEv[id] = data || []; if (bkOpen === id) drawBookings();
+}
+async function showFile(id, kind, btn) {
+  const b = bks.find(x => x.id === id); const path = kind === 'proof' ? b.proof_path : b.inspiration_path; if (!path) return;
+  btn.disabled = true;
+  const { data, error } = await sb.storage.from('booking-files').createSignedUrl(path, 600);
+  btn.disabled = false;
+  if (error) { toast('Could not open the file: ' + error.message, true); return; }
+  const box = $('fv' + id);
+  box.innerHTML = /\.pdf$/i.test(path) ? '<a class="btn" target="_blank" rel="noopener" href="' + esc(data.signedUrl) + '">Open PDF ↗</a>' : '<a target="_blank" rel="noopener" href="' + esc(data.signedUrl) + '"><img alt="" src="' + esc(data.signedUrl) + '"></a>';
+}
+
+/* ---------- CALENDAR & DAYS OFF ---------- */
+function drawCalendar() {
+  const t = todayStr(); if (!calMonth) calMonth = t.slice(0, 7); if (!calSel) calSel = t;
+  const [y, m] = calMonth.split('-').map(Number), first = calMonth + '-01', days = new Date(Date.UTC(y, m, 0)).getUTCDate(), off = (dowOf(first) + 6) % 7;
+  const bd = new Set(blockedD.map(x => x.date)); const cnt = {};
+  bks.filter(b => ACTIVE.includes(b.status)).forEach(b => cnt[b.date] = (cnt[b.date] || 0) + 1);
+  let g = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(d => '<i class="dw">' + d + '</i>').join('') + '<i></i>'.repeat(off);
+  for (let d = 1; d <= days; d++) {
+    const ds = calMonth + '-' + String(d).padStart(2, '0'), closed = !cfg.open_days.includes(dowOf(ds)), blocked = bd.has(ds);
+    g += '<button type="button" class="cd2' + (ds === calSel ? ' sel' : '') + (ds === t ? ' tod' : '') + (closed || blocked ? ' off' : '') + '" data-act="bk-day" data-d="' + ds + '"><b>' + d + '</b>' +
+      (cnt[ds] ? '<em>' + cnt[ds] + '</em>' : '') + (blocked ? '<small>off</small>' : closed ? '<small>closed</small>' : '') + '</button>';
+  }
+  $('calGrid').innerHTML = g;
+  $('calTitle').textContent = new Date(first + 'T12:00:00Z').toLocaleDateString('en-GB', { month:'long', year:'numeric', timeZone:'UTC' });
+  drawDay();
+}
+function drawDay() {
+  const d = calSel, bdr = blockedD.find(x => x.date === d), closedDay = !cfg.open_days.includes(dowOf(d));
+  const blk = new Set(blockedS.filter(x => x.date === d).map(x => x.time));
+  const held = {}; bks.filter(b => b.date === d && ACTIVE.includes(b.status)).forEach(b => held[b.time] = b);
+  const cut = d === todayStr() ? nowMin() : (d < todayStr() ? 9999 : -1);
+  let h = '<h2>' + esc(dLong(d)) + '</h2>';
+  if (bdr) h += '<div class="notice">🚫 You are off this day' + (bdr.reason ? ' (' + esc(bdr.reason) + ')' : '') + '. Customers can’t book it.</div><div class="row"><button type="button" data-act="bk-reopen" data-d="' + d + '">Open this day again</button></div>';
+  else {
+    if (closedDay) h += '<div class="notice">Your normal days off include this day, so customers can’t book it.</div>';
+    h += '<div class="row"><input type="text" id="offWhy" placeholder="Reason (optional), e.g. Travelling"><button type="button" class="danger" data-act="bk-closeday" data-d="' + d + '">Take this day off</button></div>';
+  }
+  h += '<p class="hint" style="margin-top:1rem">Tap a free time to block it, tap a blocked time to open it.</p><div class="slots">' +
+    slotList().map(t => {
+      const b = held[t], past = toMin(t) <= cut;
+      if (b) return '<button type="button" class="sl taken" data-act="bk-open" data-id="' + b.id + '"><b>' + lbl(t) + '</b><span>' + esc(b.name) + '</span><small>' + esc(STAT[b.status][0]) + '</small></button>';
+      if (blk.has(t)) return '<button type="button" class="sl blocked" data-act="bk-slot" data-d="' + d + '" data-t="' + t + '" data-on="0"><b>' + lbl(t) + '</b><span>Blocked</span></button>';
+      return '<button type="button" class="sl free' + (past ? ' past' : '') + '" ' + (past ? 'disabled' : 'data-act="bk-slot" data-d="' + d + '" data-t="' + t + '" data-on="1"') + '><b>' + lbl(t) + '</b><span>' + (past ? 'Passed' : 'Free') + '</span></button>';
+    }).join('') + '</div>';
+  $('dayBox').innerHTML = h;
+}
+async function closeDay(d, why) {
+  const { error } = await sb.from('blocked_dates').upsert({ date:d, reason:why || '' });
+  if (error) return toast(error.message, true); toast('Day off saved ✓'); await loadBk();
+}
+async function reopenDay(d) { const { error } = await sb.from('blocked_dates').delete().eq('date', d); if (error) return toast(error.message, true); toast('Day reopened ✓'); await loadBk(); }
+async function toggleSlot(d, t, on) {
+  const q = on ? sb.from('blocked_slots').insert({ date:d, time:t }) : sb.from('blocked_slots').delete().eq('date', d).eq('time', t);
+  const { error } = await q; if (error) return toast(error.message, true); await loadBk();
+}
+
+/* ---------- CLIENTS ---------- */
+function clients() {
+  const map = {};
+  bks.forEach(b => { const k = digits(b.phone).slice(-10) || b.email; const c = map[k] || (map[k] = { name:b.name, phone:b.phone, email:b.email, list:[] }); c.list.push(b); if (b.date >= (c.last || '')) { c.name = b.name; c.email = b.email; c.phone = b.phone; c.last = b.date; } });
+  const t = todayStr();
+  return Object.values(map).map(c => ({ ...c, done:c.list.filter(b => b.status === 'COMPLETED').length, total:c.list.filter(b => b.status !== 'CANCELLED').length,
+    spent:c.list.filter(b => b.status === 'COMPLETED').reduce((a, b) => a + b.subtotal, 0), next:c.list.filter(b => b.date >= t && ['CONFIRMED','RESCHEDULED','PAYMENT VERIFICATION'].includes(b.status)).sort((a, b) => a.date.localeCompare(b.date))[0] }))
+    .sort((a, b) => b.done - a.done || b.total - a.total);
+}
+function drawClients() {
+  const s = clSearch.trim().toLowerCase(); let rows = clients();
+  if (s) rows = rows.filter(c => [c.name, c.phone, c.email].some(v => String(v).toLowerCase().includes(s)));
+  $('clCount').textContent = rows.length + (rows.length === 1 ? ' client' : ' clients');
+  $('clList').innerHTML = rows.length ? rows.map(c => '<div class="cl2"><div class="av">' + esc(c.name.trim().charAt(0).toUpperCase()) + '</div><div class="grow"><b>' + esc(c.name) + (c.done >= 3 ? ' <span class="chip s-ok">Regular</span>' : '') + '</b><small>' + esc(c.phone) + ' · ' + esc(c.email) + '</small>' +
+    '<small>' + c.done + ' done · ' + c.total + ' booked' + (c.spent ? ' · ' + money(c.spent) : '') + (c.next ? ' · next: ' + esc(dShort(c.next.date)) : '') + '</small></div><a class="btn ghost sm" target="_blank" rel="noopener" href="' + waLink(c.phone, 'Hi ' + firstName(c.name) + '! 💗') + '">WhatsApp</a></div>').join('') : '<p class="hint">No clients yet. They appear here as soon as someone books.</p>';
+}
+
+/* ---------- REPORTS ---------- */
+function drawReports() {
+  const t = todayStr(), ym = t.slice(0, 7), prev = (() => { const [y, m] = ym.split('-').map(Number); return new Date(Date.UTC(y, m - 2, 1)).toISOString().slice(0, 7); })();
+  const inR = { month:b => b.date.slice(0, 7) === ym, last:b => b.date.slice(0, 7) === prev, d30:b => b.date >= addDays(t, -30) && b.date <= t, all:() => true }[repRange];
+  const rows = bks.filter(inR), live = rows.filter(b => b.status !== 'CANCELLED'), done = rows.filter(b => b.status === 'COMPLETED'), canc = rows.filter(b => b.status === 'CANCELLED');
+  const sum = (a, f) => a.reduce((x, b) => x + f(b), 0);
+  const owed = sum(bks.filter(b => b.date >= t && ['CONFIRMED','RESCHEDULED'].includes(b.status)), b => b.balance);
+  const svc = {}; live.forEach(b => (b.services || []).forEach(s => svc[s.name] = (svc[s.name] || 0) + 1));
+  const sv = Object.entries(svc).sort((a, b) => b[1] - a[1]).slice(0, 6), mx = sv[0] ? sv[0][1] : 1;
+  const wd = [0,0,0,0,0,0,0]; live.forEach(b => wd[(dowOf(b.date) + 6) % 7]++); const wm = Math.max(1, ...wd);
+  const bar = (n, v, m) => '<div class="bar"><span>' + esc(n) + '</span><div><i style="width:' + Math.round(v / m * 100) + '%"></i></div><b>' + v + '</b></div>';
+  const rr = [['month','This month'],['last','Last month'],['d30','Last 30 days'],['all','All time']];
+  $('repBox').innerHTML = '<div class="tabs">' + rr.map(([k, n]) => '<button type="button" class="tab' + (repRange === k ? ' on' : '') + '" data-act="bk-rep" data-k="' + k + '">' + n + '</button>').join('') + '</div>' +
+    '<div class="stats">' + [['Bookings', live.length], ['Completed', done.length], ['Cancelled', canc.length], ['Earned (completed)', money(sum(done, b => b.subtotal))], ['Deposits collected', money(sum(live.filter(b => b.payment_verified_at), b => b.deposit))], ['Balances still to collect', money(owed)]].map(([k, v]) => '<div class="card"><small>' + k + '</small><b>' + v + '</b></div>').join('') + '</div>' +
+    '<div class="card" style="margin-top:1rem"><h2>Most booked services</h2>' + (sv.length ? sv.map(([n, v]) => bar(n, v, mx)).join('') : '<p class="hint">Nothing yet.</p>') + '</div>' +
+    '<div class="card"><h2>Busiest days</h2>' + ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map((d, i) => bar(d, wd[i], wm)).join('') + '</div>';
+}
+
+/* ---------- MESSAGES ---------- */
+function drawMessages() {
+  $('msgList').innerHTML = msgs.length ? msgs.map(m => '<article class="card msg' + (m.read ? '' : ' unread') + '"><div class="row" style="justify-content:space-between"><b>' + esc(m.name) + (m.read ? '' : ' <span class="chip s-verify">New</span>') + '</b><small>' + esc(new Date(m.created_at).toLocaleString('en-GB', { timeZone:TZ, day:'numeric', month:'short', hour:'numeric', minute:'2-digit' })) + '</small></div>' +
+    '<p>' + esc(m.message) + '</p><div class="row"><a class="btn sm" href="mailto:' + esc(m.email) + '?subject=' + encodeURIComponent('Re: your message to Joy Nail Artistry') + '">Reply by email</a>' +
+    '<button type="button" class="ghost sm" data-act="bk-mread" data-id="' + m.id + '" data-r="' + (m.read ? 0 : 1) + '">' + (m.read ? 'Mark as new' : 'Mark as read') + '</button><button type="button" class="danger sm" data-act="bk-mdel" data-id="' + m.id + '">Delete</button></div></article>').join('') : '<p class="hint">No messages yet.</p>';
+}
+
+/* ---------- clicks ---------- */
+function openBooking(id) { bkFilter = 'all'; bkSearch = ''; if ($('bkSearch')) $('bkSearch').value = ''; bkOpen = id; bkPanel = null; go('bookings'); drawBookings(); loadEvents(id); setTimeout(() => { const el = document.querySelector('.bk.open'); if (el) el.scrollIntoView({ block:'start' }); }, 50); }
+document.addEventListener('click', async e => {
+  const el = e.target.closest('[data-act]'); if (!el || !el.dataset.act.startsWith('bk-') || !bkLoaded) return;
+  const a = el.dataset.act, id = +el.dataset.id || null;
+  if (a === 'bk-tab') { bkFilter = el.dataset.k; bkOpen = null; bkPanel = null; drawBookings(); }
+  else if (a === 'bk-toggle') { bkOpen = bkOpen === id ? null : id; bkPanel = null; drawBookings(); if (bkOpen) loadEvents(id); }
+  else if (a === 'bk-open') openBooking(id);
+  else if (a === 'bk-file') showFile(id, el.dataset.k, el);
+  else if (a === 'bk-panel') { bkPanel = { id, kind:el.dataset.p, date:'' }; drawBookings(); }
+  else if (a === 'bk-panel-x') { bkPanel = null; drawBookings(); }
+  else if (a === 'bk-do') { el.disabled = true; await bkAction(id, el.dataset.a); }
+  else if (a === 'bk-go-panel') { el.disabled = true; const why = ($('pnWhy').value || '').trim(); await bkAction(id, bkPanel.kind, why); }
+  else if (a === 'bk-go-resched') { const d = $('rsDate').value, t = $('rsTime').value; if (!d || !t) return toast('Pick a date and a free time.', true); el.disabled = true; if (!await bkAction(id, 'reschedule', ($('rsWhy').value || '').trim(), d, t)) el.disabled = false; }
+  else if (a === 'bk-del') { if (!confirm('Delete this cancelled booking for good?')) return; const b = bks.find(x => x.id === id); const { error } = await sb.from('bookings').delete().eq('id', id); if (error) return toast(error.message, true); const files = [b.proof_path, b.inspiration_path].filter(Boolean); if (files.length) await sb.storage.from('booking-files').remove(files); bkOpen = null; toast('Deleted'); await loadBk(); }
+  else if (a === 'bk-day') { calSel = el.dataset.d; drawCalendar(); }
+  else if (a === 'bk-closeday') { el.disabled = true; await closeDay(el.dataset.d, ($('offWhy').value || '').trim()); }
+  else if (a === 'bk-reopen') { el.disabled = true; await reopenDay(el.dataset.d); }
+  else if (a === 'bk-slot') { el.disabled = true; await toggleSlot(el.dataset.d, el.dataset.t, el.dataset.on === '1'); }
+  else if (a === 'bk-rep') { repRange = el.dataset.k; drawReports(); }
+  else if (a === 'bk-mread') { await sb.from('messages').update({ read: el.dataset.r === '1' }).eq('id', id); await loadBk(); }
+  else if (a === 'bk-mdel') { if (!confirm('Delete this message?')) return; await sb.from('messages').delete().eq('id', id); await loadBk(); }
+});
+document.addEventListener('change', e => {
+  if (e.target.id === 'rsDate' && bkPanel) { bkPanel.date = e.target.value; const keep = $('rsWhy') ? $('rsWhy').value : ''; drawBookings(); if ($('rsWhy')) $('rsWhy').value = keep; }
+});
+document.addEventListener('input', e => {
+  if (e.target.id === 'bkSearch') { bkSearch = e.target.value; drawBookings(); const i = $('bkSearch'); }
+  if (e.target.id === 'clSearch') { clSearch = e.target.value; drawClients(); }
+});
+document.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target.matches && e.target.matches('.bk-h')) { e.preventDefault(); e.target.click(); } });
+$('calPrev').addEventListener('click', () => { const [y, m] = calMonth.split('-').map(Number); calMonth = new Date(Date.UTC(y, m - 2, 1)).toISOString().slice(0, 7); drawCalendar(); });
+$('calNext').addEventListener('click', () => { const [y, m] = calMonth.split('-').map(Number); calMonth = new Date(Date.UTC(y, m, 1)).toISOString().slice(0, 7); drawCalendar(); });
+$('calToday').addEventListener('click', () => { calMonth = todayStr().slice(0, 7); calSel = todayStr(); drawCalendar(); });
+
+/* hook into the existing navigation + login */
+const _go = go; go = function (v) { _go(v); if (bkLoaded && ['bookings','calendar','clients','reports','messages','home'].includes(v)) loadBk(true); };
+const _ll = loadList; loadList = async function () { await _ll(); if (!bkLoaded || !bkTimer) { loadBk(); clearInterval(bkTimer); bkTimer = setInterval(() => { if (!document.hidden) loadBk(true); }, 45000); } };
+document.addEventListener('visibilitychange', () => { if (!document.hidden && bkLoaded) loadBk(true); });
+
 </script>
 </body>
 </html>
